@@ -1,0 +1,62 @@
+[
+  {
+    "nom": "Paris",
+    "code": 75
+  },
+  {
+    "nom": "Seine-Maritime",
+    "code": 76
+  },
+  {
+    "nom": "Nord",
+    "code": 59
+  },
+  {
+    "nom": "Gironde",
+    "code": 33
+  },
+  {
+    "nom": "Haute-Garonne",
+    "code": 31
+  },
+  {
+    "nom": "Loire-Atlantique",
+    "code": 44
+  },
+  {
+    "nom": "Bouches-du-Rhône",
+    "code": 13
+  },
+  {
+    "nom": "Var",
+    "code": 83
+  },
+  {
+    "nom": "Rhône",
+    "code": 69
+  },
+  {
+    "nom": "Isère",
+    "code": 38
+  },
+  {
+    "nom": "Bas-Rhin",
+    "code": 67
+  },
+  {
+    "nom": "Calvados",
+    "code": 14
+  },
+  {
+    "nom": "Finistère",
+    "code": 29
+  },
+  {
+    "nom": "Hérault",
+    "code": 34
+  },
+  {
+    "nom": "Puy-de-Dôme",
+    "code": 63
+  }
+]

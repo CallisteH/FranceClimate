@@ -10,23 +10,10 @@ const MOIS_NOMS = [
 
 // Références DOM
 const selectDepartement = document.getElementById("departement");
-const selectMois = document.getElementById("mois");
-const selectAnnee = document.getElementById("annee");
-const form = document.getElementById("form-anomalie");
-const btnCalculer = document.getElementById("btn-calculer");
-const resultat = document.getElementById("resultat");
-const erreur = document.getElementById("erreur");
-const chargement = document.getElementById("chargement");
-
-// Remplir le sélecteur de mois
-function remplirMois() {
-    MOIS_NOMS.forEach((nom, i) => {
-        const opt = document.createElement("option");
-        opt.value = i + 1;
-        opt.textContent = nom;
-        selectMois.appendChild(opt);
-    });
-}
+const graphChargement = document.getElementById("graph-chargement");
+const graphErreur = document.getElementById("graph-erreur");
+const chartCanvas = document.getElementById("chart-temp");
+let chartInstance = null;
 
 // Charger les départements depuis l'API
 async function chargerDepartements() {
@@ -39,100 +26,130 @@ async function chargerDepartements() {
             opt.textContent = `${d.code} - ${d.nom}`;
             selectDepartement.appendChild(opt);
         });
+        // Rendu initial du graphique sur le premier département chargé
+        if (selectDepartement.value) construireGraphique(selectDepartement.value);
     } catch (e) {
-        afficherErreur("Impossible de charger la liste des départements.");
+        afficherGraphErreur("Impossible de charger la liste des départements.");
     }
 }
 
-// Charger les années depuis l'API
-async function chargerAnnees() {
-    try {
-        const res = await fetch(`${API_BASE}/api/annees`);
-        const annees = await res.json();
-        annees.forEach(a => {
-            const opt = document.createElement("option");
-            opt.value = a;
-            opt.textContent = a;
-            selectAnnee.appendChild(opt);
-        });
-    } catch (e) {
-        afficherErreur("Impossible de charger la liste des années.");
+// Initialisation
+chargerDepartements();
+
+// --- Graphique mensuel par département ---
+
+// Génère une couleur HSL répartie sur le cercle pour n couleurs distinctes.
+function paletteCouleurs(n) {
+    const couleurs = [];
+    for (let i = 0; i < n; i++) {
+        const hue = Math.round((i * 360) / n);
+        couleurs.push(`hsl(${hue}, 70%, 60%)`);
     }
+    return couleurs;
 }
 
-// Afficher une erreur
-function afficherErreur(msg) {
-    resultat.classList.add("hidden");
-    erreur.textContent = msg;
-    erreur.classList.remove("hidden");
+function afficherGraphErreur(msg) {
+    graphErreur.textContent = msg;
+    graphErreur.classList.remove("hidden");
 }
 
-// Afficher le résultat
-function afficherResultat(data) {
-    erreur.classList.add("hidden");
-
-    const moisNom = MOIS_NOMS[data.mois - 1] || `Mois ${data.mois}`;
-    document.getElementById("r-departement").textContent =
-        `${data.departement} - ${moisNom} ${data.annee}`;
-
-    const elAnomalie = document.getElementById("r-anomalie");
-    const signe = data.anomalie > 0 ? "+" : "";
-    elAnomalie.textContent = `${signe}${data.anomalie.toFixed(1)}°C`;
-
-    // Couleur selon le signe
-    elAnomalie.classList.remove("positive", "negative", "neutre");
-    if (data.anomalie > 0.2) {
-        elAnomalie.classList.add("positive");
-    } else if (data.anomalie < -0.2) {
-        elAnomalie.classList.add("negative");
-    } else {
-        elAnomalie.classList.add("neutre");
-    }
-
-    document.getElementById("r-detail").textContent =
-        `Température observée : ${data.temperature_moyenne.toFixed(1)}°C | ` +
-        `Normale 1991-2020 : ${data.normale_1991_2020.toFixed(1)}°C`;
-
-    resultat.classList.remove("hidden");
-}
-
-// Soumettre le formulaire
-form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const departement = selectDepartement.value;
-    const mois = selectMois.value;
-    const annee = selectAnnee.value;
-
-    if (!departement || !mois || !annee) {
-        afficherErreur("Veuillez sélectionner un département, un mois et une année.");
-        return;
-    }
-
-    btnCalculer.disabled = true;
-    chargement.classList.remove("hidden");
-    resultat.classList.add("hidden");
-    erreur.classList.add("hidden");
+async function construireGraphique(departement) {
+    graphErreur.classList.add("hidden");
+    graphChargement.classList.remove("hidden");
 
     try {
         const res = await fetch(
-            `${API_BASE}/api/anomalie?departement=${encodeURIComponent(departement)}&mois=${mois}&annee=${annee}`
+            `${API_BASE}/api/anomalies?departement=${encodeURIComponent(departement)}`
         );
         const data = await res.json();
-
         if (!res.ok) {
-            afficherErreur(data.error || "Données non trouvées.");
-        } else {
-            afficherResultat(data);
+            afficherGraphErreur(data.error || "Données non trouvées.");
+            return;
         }
-    } catch (e) {
-        afficherErreur("Erreur de connexion à l'API.");
-    } finally {
-        btnCalculer.disabled = false;
-        chargement.classList.add("hidden");
-    }
-});
 
-// Initialisation
-remplirMois();
-chargerDepartements();
-chargerAnnees();
+        // Reshape : seriesParAnnee[annee][mois-1] = temperature_moyenne
+        // normale[mois-1] = normale_1991_2020 (constante par mois)
+        const annees = [];
+        const seriesParAnnee = {};
+        const normale = new Array(12).fill(null);
+
+        for (const a of data) {
+            const idx = a.mois - 1;
+            if (!seriesParAnnee[a.annee]) {
+                seriesParAnnee[a.annee] = new Array(12).fill(null);
+                annees.push(a.annee);
+            }
+            seriesParAnnee[a.annee][idx] = a.temperature_moyenne;
+            if (normale[idx] === null) normale[idx] = a.normale_1991_2020;
+        }
+
+        annees.sort();
+        const couleurs = paletteCouleurs(annees.length);
+
+        const datasets = annees.map((annee, i) => ({
+            label: String(annee),
+            data: seriesParAnnee[annee],
+            borderColor: couleurs[i],
+            backgroundColor: couleurs[i],
+            tension: 0.25,
+            pointRadius: 3,
+            borderWidth: 2
+        }));
+
+        // Normale 1991-2020 en pointillés, en dernier ( référence )
+        datasets.push({
+            label: "Normale 1991-2020",
+            data: normale,
+            borderColor: "#e8eef2",
+            backgroundColor: "#e8eef2",
+            borderDash: [6, 6],
+            tension: 0.25,
+            pointRadius: 2,
+            borderWidth: 2
+        });
+
+        if (chartInstance) chartInstance.destroy();
+        chartInstance = new Chart(chartCanvas, {
+            type: "line",
+            data: { labels: MOIS_NOMS, datasets },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: "index", intersect: false },
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: { color: "#e8eef2", usePointStyle: true, boxWidth: 12 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) =>
+                                `${ctx.dataset.label} : ${ctx.parsed.y.toFixed(1)}°C`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: "Mois", color: "#8a9ba8" },
+                        ticks: { color: "#8a9ba8" },
+                        grid: { color: "rgba(255,255,255,0.05)" }
+                    },
+                    y: {
+                        title: { display: true, text: "Température (°C)", color: "#8a9ba8" },
+                        ticks: { color: "#8a9ba8" },
+                        grid: { color: "rgba(255,255,255,0.05)" }
+                    }
+                }
+            }
+        });
+    } catch (e) {
+        afficherGraphErreur("Erreur de connexion à l'API.");
+    } finally {
+        graphChargement.classList.add("hidden");
+    }
+}
+
+// Met à jour le graphique dès qu'on change de département
+selectDepartement.addEventListener("change", () => {
+    if (selectDepartement.value) construireGraphique(selectDepartement.value);
+});

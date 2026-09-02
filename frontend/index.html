@@ -4,42 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anomalies de Température par Département</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Anomalies de Température</h1>
-        <p class="subtitle">Par rapport à la normale climatique 1991-2020</p>
+        <h1>Températures mensuelles par département</h1>
+        <p class="subtitle">Une courbe par année + normale 1991-2020 (cliquez sur la légende pour masquer/afficher)</p>
 
-        <form id="form-anomalie">
-            <div class="field">
-                <label for="departement">Département</label>
-                <select id="departement" required></select>
-            </div>
-
-            <div class="field-row">
-                <div class="field">
-                    <label for="mois">Mois</label>
-                    <select id="mois" required></select>
-                </div>
-                <div class="field">
-                    <label for="annee">Année</label>
-                    <select id="annee" required></select>
-                </div>
-            </div>
-
-            <button type="submit" id="btn-calculer">Calculer l'anomalie</button>
-        </form>
-
-        <div id="resultat" class="resultat hidden">
-            <div class="resultat-departement" id="r-departement"></div>
-            <div class="resultat-anomalie" id="r-anomalie"></div>
-            <div class="resultat-detail" id="r-detail"></div>
+        <div class="field">
+            <label for="departement">Département</label>
+            <select id="departement" required></select>
         </div>
 
-        <div id="erreur" class="erreur hidden"></div>
+        <div id="graph-chargement" class="chargement hidden">Chargement du graphique…</div>
+        <div id="graph-erreur" class="erreur hidden"></div>
 
-        <div id="chargement" class="chargement hidden">Chargement…</div>
+        <div class="chart-wrapper">
+            <canvas id="chart-temp"></canvas>
+        </div>
     </div>
 
     <script src="script.js"></script>

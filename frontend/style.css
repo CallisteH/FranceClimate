@@ -40,9 +40,16 @@ h1 {
 }
 
 .subtitle {
-    margin: 0 0 28px;
+    margin: 0 0 4px;
     color: var(--text-muted);
     font-size: 0.9rem;
+}
+
+.source {
+    margin: 0 0 28px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    font-style: italic;
 }
 
 .field {
@@ -96,9 +103,19 @@ select:focus {
     display: none;
 }
 
+.chart-block {
+    margin-top: 24px;
+}
+
+.chart-block h2 {
+    margin: 0 0 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
 .chart-wrapper {
-    margin-top: 20px;
-    height: 380px;
+    height: 280px;
     width: 100%;
     position: relative;
 }

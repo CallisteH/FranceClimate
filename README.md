@@ -1,15 +1,21 @@
-# FranceClimate — Anomalies de Température par Département
+# FranceClimate — Climat mensuel par département
 
-Application web affichant l'anomalie de température mensuelle d'un département
-français par rapport à la normale climatique 1991-2020.
+Application web affichant les données climatologiques mensuelles d'un département
+français (température, précipitations, ensoleillement, vent) par rapport à la
+normale climatique 1991-2020.
+
+Les données proviennent des **données climatologiques de base mensuelles** de
+Météo-France (Licence Ouverte 2.0). Elles sont agrégées par département à partir
+des observations des stations météorologiques.
 
 ## Stack
 
 | Composant | Technologie |
 |-----------|-------------|
 | Frontend | HTML / CSS / JS (vanilla) |
+| Graphiques | Chart.js (via CDN) |
 | Backend | Python + Flask |
-| Données | CSV / JSON pré-calculés |
+| Données | CSV Météo-France / JSON pré-calculés |
 | Environnement | `uv` (gestion des dépendances Python) |
 
 ## Structure
@@ -17,13 +23,14 @@ français par rapport à la normale climatique 1991-2020.
 ```
 FranceClimate/
 ├── data/
-│   ├── normales_1991_2020.csv       # Normales mensuelles par département
-│   ├── temperatures_mensuelles.csv  # Températures observées (2018-2024)
-│   ├── anomalies.json               # Anomalies pré-calculées
+│   ├── raw/                        # Cache des CSV gz Météo-France (gitignoré)
+│   ├── normales_climat.csv         # Normales 1991-2020 par département (4 métriques)
+│   ├── observations_mensuelles.csv # Observations 2018-2024 par département
+│   ├── anomalies.json              # Anomalies pré-calculées (4 métriques)
 │   └── departements.json            # Liste des départements
 ├── backend/
 │   ├── app.py                       # API Flask
-│   ├── data_processing.py           # Génération des données
+│   ├── data_processing.py          # Pipeline de téléchargement + traitement
 │   └── requirements.txt
 ├── frontend/
 │   ├── index.html
@@ -49,14 +56,14 @@ uv pip install -r backend/requirements.txt
 python backend/data_processing.py
 ```
 
-Les fichiers sont écrits dans `/data`. Les données actuelles sont des
-**échantillons synthétiques** réalistes. Pour les remplacer par les vraies
-données Météo France :
+Le script télécharge les fichiers mensuels Météo-France (~146 MB, mis en cache
+dans `data/raw/`), agrège les stations par département, calcule les normales
+1991-2020 et les observations 2018-2024, puis produit `anomalies.json`. Le
+téléchargement n'a lieu qu'une seule fois ; les exécutions suivantes réutilisent
+le cache.
 
-1. Télécharger les normales 1991-2020 et les températures mensuelles depuis
-   [data.gouv.fr](https://www.data.gouv.fr/datasets/donnees-climatologiques-de-base-mensuelles).
-2. Nettoyer les CSV pour respecter le format attendu (voir ci-dessous).
-3. Relancer `data_processing.py` (adapté) pour régénérer `anomalies.json`.
+Source : [données climatologiques de base mensuelles](https://www.data.gouv.fr/datasets/donnees-climatologiques-de-base-mensuelles)
+de Météo-France, Licence Ouverte 2.0.
 
 ### 3. Lancer l'API
 
@@ -76,19 +83,29 @@ python -m http.server 8000 --directory frontend
 
 Puis ouvrir `http://localhost:8000`.
 
+## Métriques
+
+| Métrique | Champ | Unité | Source Météo-France |
+|----------|-------|-------|---------------------|
+| Température moyenne | `temperature` | °C | TM |
+| Précipitations (cumul) | `precipitation` | mm | RR |
+| Ensoleillement (durée) | `ensoleillement` | h | INST (converti de minutes) |
+| Vent moyen à 10 m | `vent` | m/s | FFM |
+
 ## API
 
 | Endpoint | Paramètres | Description |
 |----------|------------|-------------|
 | `GET /api/departements` | — | Liste des départements |
 | `GET /api/annees` | — | Années disponibles |
-| `GET /api/anomalie` | `departement`, `mois`, `annee` | Anomalie pour un point |
+| `GET /api/metrics` | — | Liste des métriques (libellés, unités, champs) |
+| `GET /api/anomalie` | `departement`, `mois`, `annee` | Données pour un point |
 | `GET /api/anomalies` | `departement` | Série complète d'un département |
 
 Exemple :
 
 ```
-GET /api/anomalie?departement=Gironde&mois=7&annee=2023
+GET /api/anomalies?departement=Gironde
 ```
 
 ```json
@@ -96,27 +113,36 @@ GET /api/anomalie?departement=Gironde&mois=7&annee=2023
   "departement": "Gironde",
   "mois": 7,
   "annee": 2023,
-  "temperature_moyenne": 26.7,
-  "normale_1991_2020": 25.0,
-  "anomalie": 1.7
+  "temperature": 21.7,
+  "normale_temperature": 21.2,
+  "anomalie_temperature": 0.5,
+  "precipitation": 28.0,
+  "normale_precipitation": 46.3,
+  "anomalie_precipitation": -18.3,
+  "ensoleillement": 242.8,
+  "normale_ensoleillement": 262.8,
+  "anomalie_ensoleillement": -20.0,
+  "vent": 2.8,
+  "normale_vent": 2.8,
+  "anomalie_vent": 0.0
 }
 ```
 
-## Format des données attendu
+## Format des données
 
-### `normales_1991_2020.csv`
+### `normales_climat.csv`
 
 ```csv
-departement,mois,normale_1991_2020
-Gironde,1,6.2
-Gironde,2,7.1
+departement,mois,normale_temperature,normale_precipitation,normale_vent,normale_ensoleillement
+Gironde,1,6.7,85.8,3.2,91.0
+Gironde,7,21.2,46.3,2.8,262.8
 ```
 
-### `temperatures_mensuelles.csv`
+### `observations_mensuelles.csv`
 
 ```csv
-departement,mois,annee,temperature_moyenne
-Gironde,7,2023,22.5
+departement,annee,mois,temperature,precipitation,vent,ensoleillement
+Gironde,2023,7,21.7,28.0,2.8,242.8
 ```
 
 ## Déploiement
@@ -125,3 +151,12 @@ Gironde,7,2023,22.5
 - **Frontend** : GitHub Pages ou Netlify (site statique).
 - Mettre à jour `API_BASE` dans `frontend/script.js` avec l'URL de l'API
   déployée.
+
+## Notes
+
+- Les données sont agrégées par département (moyenne des stations).
+- La Corse (fichier unifié 20) est séparée en Corse-du-Sud (2A) et Haute-Corse
+  (2B) par latitude.
+- Mayotte (976) n'a pas de données mensuelles disponibles.
+- Les normales sont calculées sur la période 1991-2020, les observations sur
+  2018-2024.

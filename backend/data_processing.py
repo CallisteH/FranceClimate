@@ -1,210 +1,309 @@
 """
-Génère des données d'échantillon réalistes pour le développement de l'application.
+Télécharge et traite les vraies données climatologiques mensuelles de Météo-France.
 
-Produit trois fichiers dans /data :
-  - normales_1991_2020.csv  : normale mensuelle par département (moyenne 1991-2020)
-  - temperatures_mensuelles.csv : température moyenne mensuelle observée (2018-2024)
-  - anomalies.json          : anomalies pré-calculées (température - normale)
+Produit dans /data :
+  - normales_climat.csv        : normale 1991-2020 par département et mois (4 métriques)
+  - observations_mensuelles.csv : observations 2018-2024 par département, mois, année
+  - anomalies.json             : anomalies pré-calculées (observation - normale)
+  - departements.json          : liste des départements disponibles
 
-Les valeurs sont synthétiques mais plausibles ( climat tempéré français ).
-Remplacer ensuite par les vraies données Météo France / data.gouv.fr.
+Source : Météo-France, données climatologiques de base mensuelles (Licence Ouverte 2.0).
+Les fichiers bruts sont mis en cache dans data/raw/ (cf. .gitignore).
+
+Métriques extraites :
+  - TM  : température moyenne (°C)
+  - RR  : cumul mensuel des précipitations (mm)
+  - FFM : vitesse moyenne du vent à 10 m (m/s)
+  - INST : durée d'insolation (minutes → convertie en heures)
 """
 
+import gzip
 import json
 from pathlib import Path
 
-import numpy as np
 import pandas as pd
+import requests
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data"
-DATA_DIR.mkdir(exist_ok=True)
+RAW_DIR = DATA_DIR / "raw"
+RAW_DIR.mkdir(parents=True, exist_ok=True)
 
-# Tous les départements français (96 métropolitains + 5 DOM).
-# (nom, numéro, température annuelle moyenne de base en °C, amplitude saisonnière en °C)
-# Métropole : amplitude ~11°C ; DOM : amplitude ~2-3°C (climat tropical).
-DEPARTEMENTS = [
-    ("Ain", 1, 11.5, 11.0),
-    ("Aisne", 2, 11.0, 11.0),
-    ("Allier", 3, 12.0, 11.0),
-    ("Alpes-de-Haute-Provence", 4, 11.0, 11.5),
-    ("Hautes-Alpes", 5, 9.0, 12.0),
-    ("Alpes-Maritimes", 6, 16.0, 9.0),
-    ("Ardèche", 7, 13.5, 11.0),
-    ("Ardennes", 8, 10.5, 11.0),
-    ("Ariège", 9, 12.5, 10.5),
-    ("Aube", 10, 11.0, 11.5),
-    ("Aude", 11, 14.5, 10.0),
-    ("Aveyron", 12, 11.0, 11.0),
-    ("Bouches-du-Rhône", 13, 15.6, 10.0),
-    ("Calvados", 14, 11.5, 10.5),
-    ("Cantal", 15, 9.5, 11.0),
-    ("Charente", 16, 13.0, 10.5),
-    ("Charente-Maritime", 17, 13.0, 9.5),
-    ("Cher", 18, 12.0, 11.5),
-    ("Corrèze", 19, 11.5, 11.0),
-    ("Corse-du-Sud", "2A", 16.0, 8.0),
-    ("Haute-Corse", "2B", 15.5, 8.5),
-    ("Côte-d'Or", 21, 11.0, 11.5),
-    ("Côtes-d'Armor", 22, 11.5, 8.5),
-    ("Creuse", 23, 10.5, 11.5),
-    ("Dordogne", 24, 13.0, 10.5),
-    ("Doubs", 25, 10.5, 11.5),
-    ("Drôme", 26, 13.5, 11.0),
-    ("Eure", 27, 11.0, 10.5),
-    ("Eure-et-Loir", 28, 11.0, 11.5),
-    ("Finistère", 29, 11.8, 7.5),
-    ("Gard", 30, 15.0, 10.0),
-    ("Haute-Garonne", 31, 13.9, 10.5),
-    ("Gers", 32, 13.5, 10.0),
-    ("Gironde", 33, 14.0, 9.5),
-    ("Hérault", 34, 15.1, 9.5),
-    ("Ille-et-Vilaine", 35, 11.5, 8.5),
-    ("Indre", 36, 12.0, 11.5),
-    ("Indre-et-Loire", 37, 12.0, 11.0),
-    ("Isère", 38, 11.8, 11.5),
-    ("Jura", 39, 10.5, 11.5),
-    ("Landes", 40, 14.0, 9.0),
-    ("Loir-et-Cher", 41, 11.5, 11.5),
-    ("Loire", 42, 11.5, 11.0),
-    ("Haute-Loire", 43, 10.0, 11.5),
-    ("Loire-Atlantique", 44, 12.8, 9.0),
-    ("Loiret", 45, 11.5, 11.5),
-    ("Lot", 46, 12.5, 10.5),
-    ("Lot-et-Garonne", 47, 13.5, 10.5),
-    ("Lozère", 48, 10.0, 11.5),
-    ("Maine-et-Loire", 49, 12.0, 10.5),
-    ("Manche", 50, 11.0, 7.5),
-    ("Marne", 51, 10.5, 11.5),
-    ("Haute-Marne", 52, 10.0, 12.0),
-    ("Mayenne", 53, 11.5, 10.5),
-    ("Meurthe-et-Moselle", 54, 10.5, 11.5),
-    ("Meuse", 55, 10.0, 12.0),
-    ("Morbihan", 56, 12.0, 8.0),
-    ("Moselle", 57, 10.0, 11.5),
-    ("Nièvre", 58, 11.5, 11.5),
-    ("Nord", 59, 10.8, 10.0),
-    ("Oise", 60, 11.0, 11.0),
-    ("Orne", 61, 11.0, 10.5),
-    ("Pas-de-Calais", 62, 10.5, 9.5),
-    ("Puy-de-Dôme", 63, 11.0, 11.0),
-    ("Pyrénées-Atlantiques", 64, 13.5, 9.0),
-    ("Hautes-Pyrénées", 65, 11.0, 10.0),
-    ("Pyrénées-Orientales", 66, 15.5, 9.5),
-    ("Bas-Rhin", 67, 10.9, 11.5),
-    ("Haut-Rhin", 68, 10.5, 11.5),
-    ("Rhône", 69, 12.4, 11.0),
-    ("Haute-Saône", 70, 10.0, 11.5),
-    ("Saône-et-Loire", 71, 11.5, 11.5),
-    ("Sarthe", 72, 11.5, 11.0),
-    ("Savoie", 73, 10.0, 11.5),
-    ("Haute-Savoie", 74, 9.5, 11.5),
-    ("Paris", 75, 12.3, 11.0),
-    ("Seine-Maritime", 76, 11.2, 10.0),
-    ("Seine-et-Marne", 77, 11.5, 11.0),
-    ("Yvelines", 78, 11.5, 11.0),
-    ("Deux-Sèvres", 79, 12.5, 10.5),
-    ("Somme", 80, 10.5, 10.5),
-    ("Tarn", 81, 13.0, 10.5),
-    ("Tarn-et-Garonne", 82, 13.5, 10.5),
-    ("Var", 83, 15.9, 9.0),
-    ("Vaucluse", 84, 14.5, 10.0),
-    ("Vendée", 85, 12.5, 9.0),
-    ("Vienne", 86, 12.5, 10.5),
-    ("Haute-Vienne", 87, 11.5, 11.0),
-    ("Vosges", 88, 10.0, 11.5),
-    ("Yonne", 89, 11.5, 11.5),
-    ("Territoire de Belfort", 90, 10.0, 11.5),
-    ("Essonne", 91, 11.5, 11.0),
-    ("Hauts-de-Seine", 92, 12.0, 11.0),
-    ("Seine-Saint-Denis", 93, 12.0, 11.0),
-    ("Val-de-Marne", 94, 12.0, 11.0),
-    ("Val-d'Oise", 95, 11.5, 11.0),
-    # DOM (climat tropical, amplitude faible)
-    ("Guadeloupe", 971, 26.0, 2.0),
-    ("Martinique", 972, 26.5, 2.0),
-    ("Guyane", 973, 26.5, 1.5),
-    ("La Réunion", 974, 23.0, 3.0),
-    ("Mayotte", 976, 26.0, 2.0),
-]
+# Base URL des fichiers mensuels Météo-France sur le S3 OVH.
+MENS_URL = (
+    "https://meteofrance.s3.sbg.io.cloud.ovh.net"
+    "/data/synchro_ftp/BASE/MENS/MENSQ_{code}_previous-1950-2024.csv.gz"
+)
 
-MOIS_NOMS = [
-    "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
-    "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre",
-]
+# Codes de départements à télécharger (01-95, 20 pour la Corse, 971-975).
+# Mayotte (976) n'a pas de fichier mensuel Météo-France.
+CODES_FICHIER = (
+    [f"{n:02d}" for n in range(1, 96)]
+    + [f"{n:03d}" for n in range(971, 976)]
+)
 
-# Tendance de réchauffement par année ( °C / an ) - tendances récentes.
-TENDANCE = 0.04
+# Noms et codes des départements du projet (correspondance code fichier → nom).
+# La Corse (fichier 20) est splitée en 2A (sud, LAT < 42.35°) et 2B (nord).
+DEPARTEMENTS_NOMS = {
+    "01": ("Ain", "01"), "02": ("Aisne", "02"), "03": ("Allier", "03"),
+    "04": ("Alpes-de-Haute-Provence", "04"), "05": ("Hautes-Alpes", "05"),
+    "06": ("Alpes-Maritimes", "06"), "07": ("Ardèche", "07"), "08": ("Ardennes", "08"),
+    "09": ("Ariège", "09"), "10": ("Aube", "10"), "11": ("Aude", "11"),
+    "12": ("Aveyron", "12"), "13": ("Bouches-du-Rhône", "13"), "14": ("Calvados", "14"),
+    "15": ("Cantal", "15"), "16": ("Charente", "16"), "17": ("Charente-Maritime", "17"),
+    "18": ("Cher", "18"), "19": ("Corrèze", "19"),
+    "20": ("Corse", "20"),  # split 2A/2B par latitude
+    "21": ("Côte-d'Or", "21"), "22": ("Côtes-d'Armor", "22"), "23": ("Creuse", "23"),
+    "24": ("Dordogne", "24"), "25": ("Doubs", "25"), "26": ("Drôme", "26"),
+    "27": ("Eure", "27"), "28": ("Eure-et-Loir", "28"), "29": ("Finistère", "29"),
+    "30": ("Gard", "30"), "31": ("Haute-Garonne", "31"), "32": ("Gers", "32"),
+    "33": ("Gironde", "33"), "34": ("Hérault", "34"), "35": ("Ille-et-Vilaine", "35"),
+    "36": ("Indre", "36"), "37": ("Indre-et-Loire", "37"), "38": ("Isère", "38"),
+    "39": ("Jura", "39"), "40": ("Landes", "40"), "41": ("Loir-et-Cher", "41"),
+    "42": ("Loire", "42"), "43": ("Haute-Loire", "43"), "44": ("Loire-Atlantique", "44"),
+    "45": ("Loiret", "45"), "46": ("Lot", "46"), "47": ("Lot-et-Garonne", "47"),
+    "48": ("Lozère", "48"), "49": ("Maine-et-Loire", "49"), "50": ("Manche", "50"),
+    "51": ("Marne", "51"), "52": ("Haute-Marne", "52"), "53": ("Mayenne", "53"),
+    "54": ("Meurthe-et-Moselle", "54"), "55": ("Meuse", "55"), "56": ("Morbihan", "56"),
+    "57": ("Moselle", "57"), "58": ("Nièvre", "58"), "59": ("Nord", "59"),
+    "60": ("Oise", "60"), "61": ("Orne", "61"), "62": ("Pas-de-Calais", "62"),
+    "63": ("Puy-de-Dôme", "63"), "64": ("Pyrénées-Atlantiques", "64"),
+    "65": ("Hautes-Pyrénées", "65"), "66": ("Pyrénées-Orientales", "66"),
+    "67": ("Bas-Rhin", "67"), "68": ("Haut-Rhin", "68"), "69": ("Rhône", "69"),
+    "70": ("Haute-Saône", "70"), "71": ("Saône-et-Loire", "71"), "72": ("Sarthe", "72"),
+    "73": ("Savoie", "73"), "74": ("Haute-Savoie", "74"), "75": ("Paris", "75"),
+    "76": ("Seine-Maritime", "76"), "77": ("Seine-et-Marne", "77"), "78": ("Yvelines", "78"),
+    "79": ("Deux-Sèvres", "79"), "80": ("Somme", "80"), "81": ("Tarn", "81"),
+    "82": ("Tarn-et-Garonne", "82"), "83": ("Var", "83"), "84": ("Vaucluse", "84"),
+    "85": ("Vendée", "85"), "86": ("Vienne", "86"), "87": ("Haute-Vienne", "87"),
+    "88": ("Vosges", "88"), "89": ("Yonne", "89"), "90": ("Territoire de Belfort", "90"),
+    "91": ("Essonne", "91"), "92": ("Hauts-de-Seine", "92"),
+    "93": ("Seine-Saint-Denis", "93"), "94": ("Val-de-Marne", "94"),
+    "95": ("Val-d'Oise", "95"),
+    "971": ("Guadeloupe", "971"), "972": ("Martinique", "972"),
+    "973": ("Guyane", "973"), "974": ("La Réunion", "974"),
+    "975": ("Saint-Pierre-et-Miquelon", "975"),
+}
 
-ANNEES = list(range(2018, 2025))  # 2018 -> 2024 inclus
+# Seuil de latitude (en degrés) pour séparer Corse-du-Sud (2A) et Haute-Corse (2B).
+CORS_SEUIL_LAT = 42.35
+
+# Colonnes à extraire et leur renommage.
+COLONNES = {
+    "NUM_POSTE": "num_poste",
+    "NOM_USUEL": "nom_usuel",
+    "LAT": "lat",
+    "LON": "lon",
+    "AAAAMM": "aaaamm",
+    "TM": "temperature",
+    "QTM": "q_temperature",
+    "RR": "precipitation",
+    "QRR": "q_precipitation",
+    "FFM": "vent",
+    "QFFM": "q_vent",
+    "INST": "ensoleillement_min",
+    "QINST": "q_ensoleillement",
+}
+
+# Codes qualité acceptés (0=validé, 1=validé auto, 9=filtré). On exclut 2 (douteux) et vide.
+QCODES_VALIDES = {"0", "1", "9"}
+
+PERIODE_NORMALE = (1991, 2020)
+PERIODE_OBSERVATION = (2018, 2024)
+
+METRIQUES = ["temperature", "precipitation", "vent", "ensoleillement"]
 
 
-def normale_mensuelle(t_base: float, amplitude: float, mois: int) -> float:
-    """Normale 1991-2020 : sinusoïde centrée sur juillet (mois le plus chaud)."""
-    return round(t_base + amplitude * np.cos(2 * np.pi * (mois - 7) / 12), 1)
+def telecharger_fichier(code: str) -> Path | None:
+    """Télécharge le fichier mensuel d'un département si absent du cache."""
+    chemin = RAW_DIR / f"MENSQ_{code}_previous-1950-2024.csv.gz"
+    if chemin.exists():
+        return chemin
+    url = MENS_URL.format(code=code)
+    try:
+        resp = requests.get(url, timeout=120)
+        resp.raise_for_status()
+    except requests.RequestException as e:
+        print(f"  ! Téléchargement échoué pour {code} : {e}")
+        return None
+    chemin.write_bytes(resp.content)
+    return chemin
 
 
-def temperature_observee(t_base: float, amplitude: float, mois: int, annee: int, rng: np.random.Generator) -> float:
-    """Température observée : normale + tendance de réchauffement + bruit aléatoire."""
-    base = normale_mensuelle(t_base, amplitude, mois)
-    tendance = TENDANCE * (annee - 2005)  # référence 2005
-    bruit = rng.normal(0, 1.0)
-    return round(base + tendance + bruit, 1)
+def code_qualite_valide(val) -> bool:
+    """Vérifie qu'un code qualité est valide (non douteux)."""
+    if pd.isna(val) or val == "":
+        return False
+    try:
+        return str(int(float(val))) in QCODES_VALIDES
+    except (ValueError, TypeError):
+        return False
+
+
+def parser_fichier(chemin: Path, code_fichier: str) -> pd.DataFrame:
+    """Parse un fichier CSV gzippé et retourne un DataFrame filtré."""
+    with gzip.open(chemin, "rt", encoding="utf-8", errors="replace") as f:
+        df = pd.read_csv(f, sep=";", dtype=str, low_memory=False)
+
+    # Garder uniquement les colonnes d'intérêt
+    cols_presentes = [c for c in COLONNES if c in df.columns]
+    df = df[cols_presentes].rename(
+        columns={k: v for k, v in COLONNES.items() if k in cols_presentes}
+    )
+
+    # Extraire année et mois depuis AAAAMM
+    df["aaaamm"] = df["aaaamm"].astype(str).str.zfill(6)
+    df["annee"] = pd.to_numeric(df["aaaamm"].str[:4], errors="coerce")
+    df["mois"] = pd.to_numeric(df["aaaamm"].str[4:6], errors="coerce")
+    df = df.dropna(subset=["annee", "mois"])
+    df["annee"] = df["annee"].astype(int)
+    df["mois"] = df["mois"].astype(int)
+
+    # Filtrer sur la période utile (1991-2024)
+    df = df[(df["annee"] >= 1991) & (df["annee"] <= 2024)]
+
+    # Latitude : Météo-France utilise des millionièmes de degré, négatifs au sud.
+    # La Corse est au nord (positive). On prend la valeur absolue pour le seuil.
+    df["lat"] = pd.to_numeric(df["lat"], errors="coerce").abs()
+
+    # Convertir les métriques en numérique et filtrer par code qualité
+    paires_q = [
+        ("temperature", "q_temperature"),
+        ("precipitation", "q_precipitation"),
+        ("vent", "q_vent"),
+        ("ensoleillement_min", "q_ensoleillement"),
+    ]
+    for col, qcol in paires_q:
+        if col not in df.columns:
+            df[col] = pd.NA
+            continue
+        df[col] = pd.to_numeric(df[col], errors="coerce")
+        if qcol in df.columns:
+            masque = df[qcol].apply(code_qualite_valide)
+            df[col] = df[col].where(masque)
+
+    # Convertir l'insolation de minutes en heures
+    df["ensoleillement"] = pd.to_numeric(df["ensoleillement_min"], errors="coerce") / 60.0
+    df = df.drop(columns=["ensoleillement_min"], errors="ignore")
+
+    # Assigner le nom de département (split Corse)
+    if code_fichier == "20":
+        df["departement"] = df["lat"].apply(
+            lambda lat: "Corse-du-Sud" if pd.notna(lat) and lat / 1e6 < CORS_SEUIL_LAT
+            else "Haute-Corse"
+        )
+    else:
+        nom, _ = DEPARTEMENTS_NOMS[code_fichier]
+        df["departement"] = nom
+
+    return df
 
 
 def main() -> None:
-    rng = np.random.default_rng(42)
+    print("=== FranceClimate — Pipeline de données réelles Météo-France ===\n")
 
-    # --- Normales 1991-2020 ---
-    normales_rows = []
-    for nom, _, t_base, amplitude in DEPARTEMENTS:
-        for mois in range(1, 13):
-            normales_rows.append({
-                "departement": nom,
-                "mois": mois,
-                "normale_1991_2020": normale_mensuelle(t_base, amplitude, mois),
-            })
-    normales = pd.DataFrame(normales_rows)
-    normales.to_csv(DATA_DIR / "normales_1991_2020.csv", index=False)
+    # 1. Télécharger les fichiers
+    print(f"Téléchargement des fichiers mensuels (cache : {RAW_DIR})")
+    chemins = {}
+    for code in CODES_FICHIER:
+        nom = DEPARTEMENTS_NOMS.get(code, ("?", code))[0]
+        c = telecharger_fichier(code)
+        if c is not None:
+            chemins[code] = c
+            print(f"  OK {code} ({nom})")
+    print(f"  {len(chemins)} fichiers disponibles\n")
 
-    # --- Températures mensuelles observées ---
-    temp_rows = []
-    for nom, _, t_base, amplitude in DEPARTEMENTS:
-        for annee in ANNEES:
-            for mois in range(1, 13):
-                temp_rows.append({
-                    "departement": nom,
-                    "mois": mois,
-                    "annee": annee,
-                    "temperature_moyenne": temperature_observee(t_base, amplitude, mois, annee, rng),
-                })
-    temperatures = pd.DataFrame(temp_rows)
-    temperatures.to_csv(DATA_DIR / "temperatures_mensuelles.csv", index=False)
+    # 2-3. Parser et concaténer tous les fichiers
+    print("Parsing et agrégation des données par station…")
+    frames = []
+    for code, chemin in chemins.items():
+        df = parser_fichier(chemin, code)
+        frames.append(df)
+        print(f"  {code} ({DEPARTEMENTS_NOMS[code][0]}): {len(df)} lignes")
+    df_all = pd.concat(frames, ignore_index=True)
+    print(f"  Total : {len(df_all)} lignes\n")
 
-    # --- Anomalies pré-calculées ---
+    # 4. Agréger par département × mois × année (moyenne des stations)
+    print("Agrégation par département, mois, année…")
+    df_agg = (
+        df_all.groupby(["departement", "annee", "mois"])[METRIQUES]
+        .mean()
+        .reset_index()
+    )
+    for c in METRIQUES:
+        df_agg[c] = df_agg[c].round(1)
+    print(f"  {len(df_agg)} enregistrements agrégés\n")
+
+    # 5. Calculer les normales 1991-2020 (moyenne par département × mois)
+    print("Calcul des normales 1991-2020…")
+    mask_norm = (df_agg["annee"] >= PERIODE_NORMALE[0]) & (df_agg["annee"] <= PERIODE_NORMALE[1])
+    normales = (
+        df_agg[mask_norm]
+        .groupby(["departement", "mois"])[METRIQUES]
+        .mean()
+        .reset_index()
+    )
+    normales = normales.rename(columns={
+        "temperature": "normale_temperature",
+        "precipitation": "normale_precipitation",
+        "vent": "normale_vent",
+        "ensoleillement": "normale_ensoleillement",
+    })
+    for c in ["normale_temperature", "normale_precipitation", "normale_vent", "normale_ensoleillement"]:
+        normales[c] = normales[c].round(1)
+    normales.to_csv(DATA_DIR / "normales_climat.csv", index=False)
+    print(f"  {len(normales)} normales écrites dans normales_climat.csv\n")
+
+    # 6. Extraire les observations 2018-2024
+    mask_obs = (df_agg["annee"] >= PERIODE_OBSERVATION[0]) & (df_agg["annee"] <= PERIODE_OBSERVATION[1])
+    observations = df_agg[mask_obs].copy()
+    observations.to_csv(DATA_DIR / "observations_mensuelles.csv", index=False)
+    print(f"  {len(observations)} observations écrites dans observations_mensuelles.csv\n")
+
+    # 7. Calculer les anomalies et générer anomalies.json
+    print("Calcul des anomalies…")
     merged = pd.merge(
-        temperatures,
+        observations,
         normales,
         on=["departement", "mois"],
         how="left",
     )
-    merged["anomalie"] = (merged["temperature_moyenne"] - merged["normale_1991_2020"]).round(1)
+    merged["anomalie_temperature"] = (merged["temperature"] - merged["normale_temperature"]).round(1)
+    merged["anomalie_precipitation"] = (merged["precipitation"] - merged["normale_precipitation"]).round(1)
+    merged["anomalie_vent"] = (merged["vent"] - merged["normale_vent"]).round(1)
+    merged["anomalie_ensoleillement"] = (merged["ensoleillement"] - merged["normale_ensoleillement"]).round(1)
+
     anomalies = merged[[
         "departement", "mois", "annee",
-        "temperature_moyenne", "normale_1991_2020", "anomalie",
+        "temperature", "normale_temperature", "anomalie_temperature",
+        "precipitation", "normale_precipitation", "anomalie_precipitation",
+        "ensoleillement", "normale_ensoleillement", "anomalie_ensoleillement",
+        "vent", "normale_vent", "anomalie_vent",
     ]]
     anomalies.to_json(DATA_DIR / "anomalies.json", orient="records", force_ascii=False, indent=2)
+    print(f"  {len(anomalies)} anomalies écrites dans anomalies.json\n")
 
-    # --- Liste des départements pour le frontend ---
-    depts = [{"nom": nom, "code": code} for nom, code, _, _ in DEPARTEMENTS]
+    # 8. Liste des départements pour le frontend
+    depts_disponibles = sorted(anomalies["departement"].unique())
+    depts_list = []
+    for nom in depts_disponibles:
+        code = "?"
+        for _, (n, c) in DEPARTEMENTS_NOMS.items():
+            if n == nom:
+                code = c
+                break
+        depts_list.append({"nom": nom, "code": code})
     (DATA_DIR / "departements.json").write_text(
-        json.dumps(depts, ensure_ascii=False, indent=2), encoding="utf-8"
+        json.dumps(depts_list, ensure_ascii=False, indent=2), encoding="utf-8"
     )
+    print(f"  {len(depts_list)} départements écrits dans departements.json\n")
 
-    print(f"Départements : {len(DEPARTEMENTS)}")
+    print("=== Résumé ===")
+    print(f"Départements : {len(depts_list)}")
     print(f"Normales     : {len(normales)} lignes")
-    print(f"Températures : {len(temperatures)} lignes")
+    print(f"Observations : {len(observations)} lignes")
     print(f"Anomalies    : {len(anomalies)} entrées")
-    print(f"Période      : {ANNEES[0]}-{ANNEES[-1]}")
+    print(f"Période obs  : {PERIODE_OBSERVATION[0]}-{PERIODE_OBSERVATION[1]}")
+    print(f"Période norm : {PERIODE_NORMALE[0]}-{PERIODE_NORMALE[1]}")
     print("Fichiers générés dans /data")
 
 

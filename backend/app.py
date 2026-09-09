@@ -1,13 +1,14 @@
 """
-API Flask servant les anomalies de température par département / mois / année.
+API Flask servant les données climatologiques par département / mois / année.
 
 Endpoints :
   GET /api/departements          -> liste des départements disponibles
   GET /api/annees                -> liste des années disponibles
+  GET /api/metrics               -> liste des métriques (libellés, unités, champs)
   GET /api/anomalie?departement=&mois=&annee=
-      -> anomalie pour un département/mois/année donné
+      -> données pour un département/mois/année donné
   GET /api/anomalies?departement=
-      -> toutes les anomalies d'un département (série temporelle)
+      -> toutes les données d'un département (série temporelle)
 """
 
 import json
@@ -44,6 +45,45 @@ def get_departements():
 def get_annees():
     annees = sorted({a["annee"] for a in load_anomalies()})
     return jsonify(annees)
+
+
+@app.route("/api/metrics", methods=["GET"])
+def get_metrics():
+    """Liste des métriques disponibles avec leurs libellés, unités et noms de champs."""
+    return jsonify([
+        {
+            "key": "temperature",
+            "label": "Température",
+            "unit": "°C",
+            "field": "temperature",
+            "normal_field": "normale_temperature",
+            "anomaly_field": "anomalie_temperature",
+        },
+        {
+            "key": "precipitation",
+            "label": "Précipitations",
+            "unit": "mm",
+            "field": "precipitation",
+            "normal_field": "normale_precipitation",
+            "anomaly_field": "anomalie_precipitation",
+        },
+        {
+            "key": "ensoleillement",
+            "label": "Ensoleillement",
+            "unit": "h",
+            "field": "ensoleillement",
+            "normal_field": "normale_ensoleillement",
+            "anomaly_field": "anomalie_ensoleillement",
+        },
+        {
+            "key": "vent",
+            "label": "Vent moyen",
+            "unit": "m/s",
+            "field": "vent",
+            "normal_field": "normale_vent",
+            "anomaly_field": "anomalie_vent",
+        },
+    ])
 
 
 @app.route("/api/anomalie", methods=["GET"])

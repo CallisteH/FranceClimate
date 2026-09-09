@@ -3,25 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anomalies de Température par Département</title>
+    <title>Climat mensuel par département</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Températures mensuelles par département</h1>
+        <h1>Climat mensuel par département</h1>
         <p class="subtitle">Une courbe par année + normale 1991-2020 (cliquez sur la légende pour masquer/afficher)</p>
+        <p class="source">Source : Météo-France, Licence Ouverte 2.0</p>
 
         <div class="field">
             <label for="departement">Département</label>
             <select id="departement" required></select>
         </div>
 
-        <div id="graph-chargement" class="chargement hidden">Chargement du graphique…</div>
+        <div id="graph-chargement" class="chargement hidden">Chargement des graphiques…</div>
         <div id="graph-erreur" class="erreur hidden"></div>
 
-        <div class="chart-wrapper">
-            <canvas id="chart-temp"></canvas>
+        <div class="chart-block">
+            <h2>Température (°C)</h2>
+            <div class="chart-wrapper">
+                <canvas id="chart-temperature"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-block">
+            <h2>Précipitations (mm)</h2>
+            <div class="chart-wrapper">
+                <canvas id="chart-precipitation"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-block">
+            <h2>Ensoleillement (h)</h2>
+            <div class="chart-wrapper">
+                <canvas id="chart-ensoleillement"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-block">
+            <h2>Vent moyen (m/s)</h2>
+            <div class="chart-wrapper">
+                <canvas id="chart-vent"></canvas>
+            </div>
         </div>
     </div>
 

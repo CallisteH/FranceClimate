@@ -114,7 +114,7 @@ def get_anomalie():
 
 @app.route("/api/anomalies", methods=["GET"])
 def get_anomalies_serie():
-    """Retourne toutes les anomalies d'un département (série 2018-2024)."""
+    """Retourne toutes les anomalies d'un département (série 2018-2026)."""
     departement = request.args.get("departement")
     if not departement:
         return jsonify({"error": "Paramètre requis: departement"}), 400

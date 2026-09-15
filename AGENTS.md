@@ -31,7 +31,8 @@ FranceClimate/
 │   └── departements.json       # Liste des départements
 ├── backend/
 │   ├── app.py                  # API Flask
-│   ├── data_processing.py     # Pipeline : téléchargement + traitement
+│   ├── data_processing.py      # Pipeline : téléchargement + traitement
+│   ├── refresh.py              # Rafraîchit les données récentes (latest)
 │   └── requirements.txt
 ├── frontend/
 │   ├── index.html
@@ -51,6 +52,9 @@ uv pip install -r backend/requirements.txt
 
 # Télécharger + traiter les données Météo-France (cache dans data/raw/)
 python backend/data_processing.py
+
+# Rafraîchir uniquement les données récentes (latest, mise à jour quotidienne)
+python backend/refresh.py
 
 # Lancer l'API (http://localhost:5000)
 python backend/app.py

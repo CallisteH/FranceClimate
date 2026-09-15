@@ -77,7 +77,7 @@
   },
   {
     "nom": "Corse-du-Sud",
-    "code": "?"
+    "code": "2A"
   },
   {
     "nom": "Creuse",
@@ -146,6 +146,10 @@
   {
     "nom": "Haut-Rhin",
     "code": "68"
+  },
+  {
+    "nom": "Haute-Corse",
+    "code": "2B"
   },
   {
     "nom": "Haute-Garonne",

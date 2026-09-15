@@ -3,7 +3,7 @@ Télécharge et traite les vraies données climatologiques mensuelles de Météo
 
 Produit dans /data :
   - normales_climat.csv        : normale 1991-2020 par département et mois (4 métriques)
-  - observations_mensuelles.csv : observations 2018-2024 par département, mois, année
+  - observations_mensuelles.csv : observations 2018-2026 par département, mois, année
   - anomalies.json             : anomalies pré-calculées (observation - normale)
   - departements.json          : liste des départements disponibles
 
@@ -29,9 +29,16 @@ RAW_DIR = DATA_DIR / "raw"
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
 # Base URL des fichiers mensuels Météo-France sur le S3 OVH.
-MENS_URL = (
+# Deux fenêtres temporelles :
+#   - previous : archive figée 1950-2024 (toutes stations, dont fermées)
+#   - latest   : 2 dernières années, stations actives uniquement, mise à jour quotidienne
+MENS_URL_PREVIOUS = (
     "https://meteofrance.s3.sbg.io.cloud.ovh.net"
     "/data/synchro_ftp/BASE/MENS/MENSQ_{code}_previous-1950-2024.csv.gz"
+)
+MENS_URL_LATEST = (
+    "https://meteofrance.s3.sbg.io.cloud.ovh.net"
+    "/data/synchro_ftp/BASE/MENS/MENSQ_{code}_latest-2025-2026.csv.gz"
 )
 
 # Codes de départements à télécharger (01-95, 20 pour la Corse, 971-975).
@@ -87,6 +94,10 @@ DEPARTEMENTS_NOMS = {
 # Seuil de latitude (en degrés) pour séparer Corse-du-Sud (2A) et Haute-Corse (2B).
 CORS_SEUIL_LAT = 42.35
 
+# Codes officiels des départements corses (non présents dans DEPARTEMENTS_NOMS
+# car le fichier Météo-France utilise le code 20 pour la Corse entière).
+CODES_CORSE = {"Corse-du-Sud": "2A", "Haute-Corse": "2B"}
+
 # Colonnes à extraire et leur renommage.
 COLONNES = {
     "NUM_POSTE": "num_poste",
@@ -108,22 +119,29 @@ COLONNES = {
 QCODES_VALIDES = {"0", "1", "9"}
 
 PERIODE_NORMALE = (1991, 2020)
-PERIODE_OBSERVATION = (2018, 2024)
+PERIODE_OBSERVATION = (2018, 2026)
 
 METRIQUES = ["temperature", "precipitation", "vent", "ensoleillement"]
 
 
-def telecharger_fichier(code: str) -> Path | None:
-    """Télécharge le fichier mensuel d'un département si absent du cache."""
-    chemin = RAW_DIR / f"MENSQ_{code}_previous-1950-2024.csv.gz"
-    if chemin.exists():
+def telecharger_fichier(code: str, fenetre: str = "previous", force: bool = False) -> Path | None:
+    """Télécharge le fichier mensuel d'un département si absent du cache.
+
+    Args:
+        code: code département (ex : "01", "971").
+        fenetre: "previous" (archive 1950-2024) ou "latest" (2025-2026, récent).
+        force: si True, retélécharge même si le fichier est déjà en cache.
+    """
+    suffixe = "previous-1950-2024" if fenetre == "previous" else "latest-2025-2026"
+    chemin = RAW_DIR / f"MENSQ_{code}_{suffixe}.csv.gz"
+    if chemin.exists() and not force:
         return chemin
-    url = MENS_URL.format(code=code)
+    url = MENS_URL_PREVIOUS if fenetre == "previous" else MENS_URL_LATEST
     try:
-        resp = requests.get(url, timeout=120)
+        resp = requests.get(url.format(code=code), timeout=120)
         resp.raise_for_status()
     except requests.RequestException as e:
-        print(f"  ! Téléchargement échoué pour {code} : {e}")
+        print(f"  ! Téléchargement échoué pour {code} ({fenetre}) : {e}")
         return None
     chemin.write_bytes(resp.content)
     return chemin
@@ -158,8 +176,8 @@ def parser_fichier(chemin: Path, code_fichier: str) -> pd.DataFrame:
     df["annee"] = df["annee"].astype(int)
     df["mois"] = df["mois"].astype(int)
 
-    # Filtrer sur la période utile (1991-2024)
-    df = df[(df["annee"] >= 1991) & (df["annee"] <= 2024)]
+    # Filtrer sur la période utile (1991-2026)
+    df = df[(df["annee"] >= 1991) & (df["annee"] <= 2026)]
 
     # Latitude : Météo-France utilise des millionièmes de degré, négatifs au sud.
     # La Corse est au nord (positive). On prend la valeur absolue pour le seuil.
@@ -188,7 +206,7 @@ def parser_fichier(chemin: Path, code_fichier: str) -> pd.DataFrame:
     # Assigner le nom de département (split Corse)
     if code_fichier == "20":
         df["departement"] = df["lat"].apply(
-            lambda lat: "Corse-du-Sud" if pd.notna(lat) and lat / 1e6 < CORS_SEUIL_LAT
+            lambda lat: "Corse-du-Sud" if pd.notna(lat) and lat < CORS_SEUIL_LAT
             else "Haute-Corse"
         )
     else:
@@ -201,22 +219,37 @@ def parser_fichier(chemin: Path, code_fichier: str) -> pd.DataFrame:
 def main() -> None:
     print("=== FranceClimate — Pipeline de données réelles Météo-France ===\n")
 
-    # 1. Télécharger les fichiers
+    # 1. Télécharger les fichiers (previous + latest)
     print(f"Téléchargement des fichiers mensuels (cache : {RAW_DIR})")
     chemins = {}
     for code in CODES_FICHIER:
         nom = DEPARTEMENTS_NOMS.get(code, ("?", code))[0]
-        c = telecharger_fichier(code)
-        if c is not None:
-            chemins[code] = c
-            print(f"  OK {code} ({nom})")
+        c_prev = telecharger_fichier(code, fenetre="previous")
+        c_latest = telecharger_fichier(code, fenetre="latest")
+        if c_prev is not None:
+            chemins[code] = (c_prev, c_latest)
+            detail = "previous"
+            if c_latest is not None:
+                detail += " + latest"
+            print(f"  OK {code} ({nom}) [{detail}]")
+        elif c_latest is not None:
+            # latest only (rare : previous indisponible)
+            chemins[code] = (None, c_latest)
+            print(f"  OK {code} ({nom}) [latest seulement]")
     print(f"  {len(chemins)} fichiers disponibles\n")
 
-    # 2-3. Parser et concaténer tous les fichiers
+    # 2-3. Parser et concaténer tous les fichiers (previous + latest)
     print("Parsing et agrégation des données par station…")
     frames = []
-    for code, chemin in chemins.items():
-        df = parser_fichier(chemin, code)
+    for code, (c_prev, c_latest) in chemins.items():
+        frames_code = []
+        if c_prev is not None:
+            df_prev = parser_fichier(c_prev, code)
+            frames_code.append(df_prev)
+        if c_latest is not None:
+            df_latest = parser_fichier(c_latest, code)
+            frames_code.append(df_latest)
+        df = pd.concat(frames_code, ignore_index=True)
         frames.append(df)
         print(f"  {code} ({DEPARTEMENTS_NOMS[code][0]}): {len(df)} lignes")
     df_all = pd.concat(frames, ignore_index=True)
@@ -286,11 +319,14 @@ def main() -> None:
     depts_disponibles = sorted(anomalies["departement"].unique())
     depts_list = []
     for nom in depts_disponibles:
-        code = "?"
-        for _, (n, c) in DEPARTEMENTS_NOMS.items():
-            if n == nom:
-                code = c
-                break
+        if nom in CODES_CORSE:
+            code = CODES_CORSE[nom]
+        else:
+            code = "?"
+            for _, (n, c) in DEPARTEMENTS_NOMS.items():
+                if n == nom:
+                    code = c
+                    break
         depts_list.append({"nom": nom, "code": code})
     (DATA_DIR / "departements.json").write_text(
         json.dumps(depts_list, ensure_ascii=False, indent=2), encoding="utf-8"

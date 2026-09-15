@@ -56,6 +56,61 @@ h1 {
     margin-bottom: 18px;
 }
 
+/* --- Carte de France --- */
+
+.carte-france {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto 8px;
+}
+
+.carte-france svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.carte-info {
+    margin: 0 0 20px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.dept-actif {
+    fill: #2a3a4a;
+    stroke: #0f1923;
+    stroke-width: 0.8;
+    cursor: pointer;
+    transition: fill 0.15s ease;
+}
+
+.dept-actif:hover {
+    fill: rgba(79, 195, 247, 0.4);
+}
+
+.dept-actif:focus-visible {
+    outline: none;
+    fill: rgba(79, 195, 247, 0.5);
+}
+
+.dept-selectionne {
+    fill: var(--accent) !important;
+}
+
+.dept-desactive {
+    fill: #141d27;
+    stroke: #0f1923;
+    stroke-width: 0.8;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.field-select {
+    max-width: 360px;
+    margin: 0 auto 18px;
+}
+
 label {
     display: block;
     margin-bottom: 6px;

@@ -12,6 +12,13 @@ const MOIS_NOMS = [
 const selectDepartement = document.getElementById("departement");
 const graphChargement = document.getElementById("graph-chargement");
 const graphErreur = document.getElementById("graph-erreur");
+const carteContainer = document.getElementById("carte-france");
+const carteInfo = document.getElementById("carte-info");
+
+// Set des noms de départements disponibles via l'API (pour activer les paths SVG)
+const nomsDepartements = new Set();
+// Map nom → élément path SVG (pour le surlignage)
+const pathsParNom = {};
 
 // Métriques à afficher (clé, canvas ID, champ valeur, champ normale, unité, libellé axe Y)
 const METRIQUES = [
@@ -24,20 +31,76 @@ const METRIQUES = [
 // Stocke les instances Chart par métrique pour pouvoir les détruire
 const chartInstances = {};
 
-// Charger les départements depuis l'API
+// Charger les départements depuis l'API, puis charger la carte SVG
 async function chargerDepartements() {
     try {
         const res = await fetch(`${API_BASE}/api/departements`);
         const depts = await res.json();
         depts.forEach(d => {
+            nomsDepartements.add(d.nom);
             const opt = document.createElement("option");
             opt.value = d.nom;
             opt.textContent = `${d.code} - ${d.nom}`;
             selectDepartement.appendChild(opt);
         });
-        if (selectDepartement.value) construireGraphiques(selectDepartement.value);
+        await chargerCarte();
+        if (selectDepartement.value) selectionnerDepartement(selectDepartement.value);
     } catch (e) {
         afficherGraphErreur("Impossible de charger la liste des départements.");
+    }
+}
+
+// Charge le SVG de France métropolitaine et active les départements disponibles
+async function chargerCarte() {
+    try {
+        const res = await fetch("carte-france.svg");
+        const svgText = await res.text();
+        carteContainer.innerHTML = svgText;
+        const svg = carteContainer.querySelector("svg");
+        if (!svg) return;
+
+        svg.querySelectorAll("path[data-nom]").forEach(path => {
+            // Normalise les apostrophes typographiques (') en apostrophes droites (')
+            const nom = path.dataset.nom.replace(/\u2019/g, "'");
+            if (!nomsDepartements.has(nom)) {
+                path.classList.add("dept-desactive");
+                return;
+            }
+            pathsParNom[nom] = path;
+            path.classList.add("dept-actif");
+            path.setAttribute("role", "button");
+            path.setAttribute("tabindex", "0");
+            path.setAttribute("aria-label", nom);
+            path.addEventListener("click", () => selectionnerDepartement(nom));
+            path.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    selectionnerDepartement(nom);
+                }
+            });
+        });
+    } catch (e) {
+        carteInfo.textContent = "Carte indisponible — utilisez la liste déroulante.";
+    }
+}
+
+// Point d'entrée unique : met à jour le select, surligne la carte, reconstruit les graphiques
+function selectionnerDepartement(nom) {
+    selectDepartement.value = nom;
+    surlignerDepartement(nom);
+    construireGraphiques(nom);
+}
+
+// Met en évidence le département cliqué sur la carte
+function surlignerDepartement(nom) {
+    Object.values(pathsParNom).forEach(p => p.classList.remove("dept-selectionne"));
+    const path = pathsParNom[nom];
+    if (path) {
+        path.classList.add("dept-selectionne");
+        carteInfo.textContent = `Département sélectionné : ${nom}`;
+    } else {
+        // Département d'outre-mer ou non trouvé sur la carte
+        carteInfo.textContent = `Département sélectionné : ${nom} (hors carte métropolitaine)`;
     }
 }
 
@@ -170,7 +233,7 @@ function construireUnGraphique(data, metric) {
     });
 }
 
-// Met à jour les graphiques dès qu'on change de département
+// Met à jour les graphiques dès qu'on change de département via la liste déroulante
 selectDepartement.addEventListener("change", () => {
-    if (selectDepartement.value) construireGraphiques(selectDepartement.value);
+    if (selectDepartement.value) selectionnerDepartement(selectDepartement.value);
 });

@@ -13,8 +13,11 @@
         <p class="subtitle">Une courbe par année + normale 1991-2020 (cliquez sur la légende pour masquer/afficher)</p>
         <p class="source">Source : Météo-France, Licence Ouverte 2.0</p>
 
-        <div class="field">
-            <label for="departement">Département</label>
+        <div id="carte-france" class="carte-france" aria-label="Carte des départements de France métropolitaine"></div>
+        <p id="carte-info" class="carte-info">Cliquez sur un département pour afficher ses graphiques</p>
+
+        <div class="field field-select">
+            <label for="departement">Ou recherchez par nom (inclut l'outre-mer)</label>
             <select id="departement" required></select>
         </div>
 

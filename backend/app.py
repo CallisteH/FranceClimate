@@ -9,6 +9,10 @@ Endpoints :
       -> données pour un département/mois/année donné
   GET /api/anomalies?departement=
       -> toutes les données d'un département (série temporelle)
+  GET /api/population?departement=
+      -> série annuelle de population totale d'un département (INSEE)
+  GET /api/population/evolution
+      -> évolution de la population sur 5 ans pour tous les départements
 """
 
 import json
@@ -33,6 +37,16 @@ def load_anomalies() -> list[dict]:
 @lru_cache(maxsize=1)
 def load_departements() -> list[dict]:
     with open(DATA_DIR / "departements.json", encoding="utf-8") as f:
+        return json.load(f)
+
+
+@lru_cache(maxsize=1)
+def load_population() -> dict[str, list[dict]]:
+    """Charge la série de population par département (INSEE).
+
+    Retourne un dict {nom_departement: [{annee, population}, ...]}.
+    """
+    with open(DATA_DIR / "population.json", encoding="utf-8") as f:
         return json.load(f)
 
 
@@ -124,6 +138,49 @@ def get_anomalies_serie():
         return jsonify({"error": "Département introuvable"}), 404
 
     return jsonify(serie)
+
+
+@app.route("/api/population", methods=["GET"])
+def get_population():
+    """Retourne la série annuelle de population d'un département (INSEE)."""
+    departement = request.args.get("departement")
+    if not departement:
+        return jsonify({"error": "Paramètre requis: departement"}), 400
+
+    pop = load_population()
+    serie = pop.get(departement)
+    if not serie:
+        return jsonify({"error": "Département introuvable"}), 404
+
+    return jsonify(serie)
+
+
+@app.route("/api/population/evolution", methods=["GET"])
+def get_population_evolution():
+    """Retourne l'évolution de la population sur 5 ans pour tous les départements.
+
+    Calcule (population_recente - population_reference) / population_reference * 100
+    en comparant la dernière année disponible à l'année N-5.
+    """
+    pop = load_population()
+    result = []
+    for dept, serie in pop.items():
+        if len(serie) < 6:
+            continue
+        recent = serie[-1]
+        ref = serie[-6]
+        evolution = round(
+            (recent["population"] - ref["population"]) / ref["population"] * 100, 2
+        )
+        result.append({
+            "departement": dept,
+            "evolution": evolution,
+            "annee_recente": recent["annee"],
+            "annee_reference": ref["annee"],
+            "population_recente": recent["population"],
+            "population_reference": ref["population"],
+        })
+    return jsonify(result)
 
 
 @app.route("/", methods=["GET"])

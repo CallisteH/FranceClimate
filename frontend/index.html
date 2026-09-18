@@ -3,52 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Climat mensuel par département</title>
+    <title>Climat et démographie par département</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Climat mensuel par département</h1>
+        <h1>Climat et démographie par département</h1>
         <p class="subtitle">Une courbe par année + normale 1991-2020 (cliquez sur la légende pour masquer/afficher)</p>
-        <p class="source">Source : Météo-France, Licence Ouverte 2.0</p>
+        <p class="source">Source : Météo-France, Licence Ouverte 2.0 · Population : INSEE, Estimations de population</p>
 
-        <div id="carte-france" class="carte-france" aria-label="Carte des départements de France métropolitaine"></div>
-        <p id="carte-info" class="carte-info">Cliquez sur un département pour afficher ses graphiques</p>
+        <div class="onglets">
+            <button type="button" class="onglet actif" data-onglet="climat">Climat</button>
+            <button type="button" class="onglet" data-onglet="demographie">Démographie</button>
+        </div>
 
         <div class="field field-select">
-            <label for="departement">Ou recherchez par nom (inclut l'outre-mer)</label>
+            <label for="departement">Recherchez par nom (inclut l'outre-mer)</label>
             <select id="departement" required></select>
         </div>
 
-        <div id="graph-chargement" class="chargement hidden">Chargement des graphiques…</div>
-        <div id="graph-erreur" class="erreur hidden"></div>
+        <!-- Onglet Climat -->
+        <div id="contenu-climat" class="onglet-contenu">
+            <div class="layout-onglet">
+                <div class="colonne-carte">
+                    <div id="carte-france-climat" class="carte-france" aria-label="Carte des départements de France métropolitaine"></div>
+                    <p id="carte-info-climat" class="carte-info">Cliquez sur un département pour afficher ses graphiques</p>
+                </div>
+                <div class="colonne-graphiques">
+                    <div id="graph-chargement" class="chargement hidden">Chargement des graphiques…</div>
+                    <div id="graph-erreur" class="erreur hidden"></div>
 
-        <div class="chart-block">
-            <h2>Température (°C)</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart-temperature"></canvas>
+                    <div class="chart-block">
+                        <h2>Température (°C)</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-temperature"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-block">
+                        <h2>Précipitations (mm)</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-precipitation"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-block">
+                        <h2>Ensoleillement (h)</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-ensoleillement"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-block">
+                        <h2>Vent moyen (m/s)</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-vent"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="chart-block">
-            <h2>Précipitations (mm)</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart-precipitation"></canvas>
-            </div>
-        </div>
+        <!-- Onglet Démographie -->
+        <div id="contenu-demographie" class="onglet-contenu hidden">
+            <div class="layout-onglet">
+                <div class="colonne-carte">
+                    <div id="carte-france-demographie" class="carte-france" aria-label="Carte de l'évolution démographique par département"></div>
+                    <p id="carte-info-demographie" class="carte-info">Évolution démographique sur 5 ans — rouge : décroissance, bleu : croissance</p>
 
-        <div class="chart-block">
-            <h2>Ensoleillement (h)</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart-ensoleillement"></canvas>
-            </div>
-        </div>
-
-        <div class="chart-block">
-            <h2>Vent moyen (m/s)</h2>
-            <div class="chart-wrapper">
-                <canvas id="chart-vent"></canvas>
+                    <div class="legende-demographie">
+                        <span class="legende-label">Fort recul</span>
+                        <span class="legende-degrade"></span>
+                        <span class="legende-label">Forte croissance</span>
+                    </div>
+                </div>
+                <div class="colonne-graphiques">
+                    <div class="chart-block">
+                        <h2>Population totale (habitants)</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-population"></canvas>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -24,14 +24,16 @@ stations météorologiques.
 ```
 FranceClimate/
 ├── data/
-│   ├── raw/                    # Cache des CSV gz Météo-France (gitignoré)
+│   ├── raw/                    # Cache des CSV gz Météo-France + xlsx INSEE (gitignoré)
 │   ├── normales_climat.csv     # Normales 1991-2020 (4 métriques)
 │   ├── observations_mensuelles.csv
 │   ├── anomalies.json          # Anomalies pré-calculées
+│   ├── population.json         # Population par département (INSEE, 1975-2026)
 │   └── departements.json       # Liste des départements
 ├── backend/
 │   ├── app.py                  # API Flask
 │   ├── data_processing.py      # Pipeline : téléchargement + traitement
+│   ├── population.py           # Pipeline : population INSEE par département
 │   ├── refresh.py              # Rafraîchit les données récentes (latest)
 │   └── requirements.txt
 ├── frontend/
@@ -53,6 +55,9 @@ uv pip install -r backend/requirements.txt
 # Télécharger + traiter les données Météo-France (cache dans data/raw/)
 python backend/data_processing.py
 
+# Télécharger + traiter les données de population INSEE
+python backend/population.py
+
 # Rafraîchir uniquement les données récentes (latest, mise à jour quotidienne)
 python backend/refresh.py
 
@@ -72,6 +77,8 @@ python -m http.server 8000 --directory frontend
 | `GET /api/metrics`        | —                                 | Liste des métriques (libellés, unités) |
 | `GET /api/anomalie`       | `departement`, `mois`, `annee`    | Données pour un point (4 métriques)   |
 | `GET /api/anomalies`      | `departement`                     | Série complète d'un département      |
+| `GET /api/population`     | `departement`                     | Série de population (INSEE, 1975-2026) |
+| `GET /api/population/evolution` | —                           | Évolution sur 5 ans, tous départements |
 
 Le endpoint `/api/anomalie` fait une recherche linéaire dans la liste
 complète chargée en mémoire ; pour des recherches fréquentes, envisager un
@@ -104,6 +111,10 @@ index par `(departement, mois, annee)`.
 - `data/anomalies.json`, `data/departements.json`, `data/normales_climat.csv`
   et `data/observations_mensuelles.csv` sont régénérés par
   `backend/data_processing.py` ; ne pas les éditer à la main.
+- `data/population.json` est régénéré par `backend/population.py` ; ne pas
+  l'éditer à la main. La source (fichier xlsx INSEE) est mise en cache dans
+  `data/raw/` (gitignoré). L'URL INSEE est codée en dur dans
+  `backend/population.py` et doit être mise à jour annuellement.
 - Les CSV bruts Météo-France sont mis en cache dans `data/raw/` (gitignoré).
 - Les données sont des vraies observations Météo-France agrégées par
   département (moyenne des stations), pas des échantillons synthétiques.

@@ -10,15 +10,22 @@ const MOIS_NOMS = [
 const selectDepartement = document.getElementById("departement");
 const graphChargement = document.getElementById("graph-chargement");
 const graphErreur = document.getElementById("graph-erreur");
-const carteContainer = document.getElementById("carte-france");
-const carteInfo = document.getElementById("carte-info");
+const carteContainerClimat = document.getElementById("carte-france-climat");
+const carteContainerDemographie = document.getElementById("carte-france-demographie");
+const carteInfoClimat = document.getElementById("carte-info-climat");
+const carteInfoDemographie = document.getElementById("carte-info-demographie");
 
 // Set des noms de départements disponibles (pour activer les paths SVG)
 const nomsDepartements = new Set();
-// Map nom → élément path SVG (pour le surlignage)
-const pathsParNom = {};
 // Map nom → code de département (pour charger le bon fichier de données)
 const codeParNom = {};
+// Map nom → élément path SVG (pour le surlignage), une par carte
+const pathsParNomClimat = {};
+const pathsParNomDemographie = {};
+// Données de population chargées en mémoire { nom: [{annee, population}, ...] }
+let populationData = {};
+// Évolution démographique { nom: { evolution, ... } }
+let evolutionParDept = {};
 
 // Métriques à afficher (clé, canvas ID, champ valeur, champ normale, unité, libellé axe Y)
 const METRIQUES = [
@@ -31,11 +38,38 @@ const METRIQUES = [
 // Stocke les instances Chart par métrique pour pouvoir les détruire
 const chartInstances = {};
 
-// Charger les départements depuis les données statiques, puis charger la carte SVG
+// --- Onglets ---
+
+function activerOnglet(nom) {
+    document.querySelectorAll(".onglet").forEach(o => {
+        o.classList.toggle("actif", o.dataset.onglet === nom);
+    });
+    document.getElementById("contenu-climat").classList.toggle("hidden", nom !== "climat");
+    document.getElementById("contenu-demographie").classList.toggle("hidden", nom !== "demographie");
+
+    if (nom === "climat") {
+        for (const m of METRIQUES) {
+            if (chartInstances[m.canvasId]) chartInstances[m.canvasId].resize();
+        }
+    } else {
+        if (chartInstances["chart-population"]) chartInstances["chart-population"].resize();
+    }
+}
+
+document.querySelectorAll(".onglet").forEach(onglet => {
+    onglet.addEventListener("click", () => activerOnglet(onglet.dataset.onglet));
+});
+
+// Charger les départements et la population depuis les données statiques, puis charger les cartes
 async function chargerDepartements() {
     try {
-        const res = await fetch(`${DATA_BASE}/departements.json`);
-        const depts = await res.json();
+        const [resDepts, resPop] = await Promise.all([
+            fetch(`${DATA_BASE}/departements.json`),
+            fetch(`${DATA_BASE}/population.json`),
+        ]);
+        const depts = await resDepts.json();
+        populationData = await resPop.json();
+
         depts.forEach(d => {
             nomsDepartements.add(d.nom);
             codeParNom[d.nom] = d.code;
@@ -44,30 +78,51 @@ async function chargerDepartements() {
             opt.textContent = `${d.code} - ${d.nom}`;
             selectDepartement.appendChild(opt);
         });
-        await chargerCarte();
+
+        calculerEvolution();
+        await chargerCarteClimat();
+        await chargerCarteDemographie();
         if (selectDepartement.value) selectionnerDepartement(selectDepartement.value);
     } catch (e) {
         afficherGraphErreur("Impossible de charger la liste des départements.");
     }
 }
 
-// Charge le SVG de France métropolitaine et active les départements disponibles
-async function chargerCarte() {
+// Calcule l'évolution de la population sur 5 ans pour chaque département
+function calculerEvolution() {
+    for (const [dept, serie] of Object.entries(populationData)) {
+        if (serie.length < 6) continue;
+        const recent = serie[serie.length - 1];
+        const ref = serie[serie.length - 6];
+        const evolution = Math.round(
+            (recent.population - ref.population) / ref.population * 100 * 100
+        ) / 100;
+        evolutionParDept[dept] = {
+            evolution,
+            annee_recente: recent.annee,
+            annee_reference: ref.annee,
+            population_recente: recent.population,
+            population_reference: ref.population,
+        };
+    }
+}
+
+// Charge le SVG pour l'onglet climat (style uniforme, cliquable)
+async function chargerCarteClimat() {
     try {
         const res = await fetch("carte-france.svg");
         const svgText = await res.text();
-        carteContainer.innerHTML = svgText;
-        const svg = carteContainer.querySelector("svg");
+        carteContainerClimat.innerHTML = svgText;
+        const svg = carteContainerClimat.querySelector("svg");
         if (!svg) return;
 
         svg.querySelectorAll("path[data-nom]").forEach(path => {
-            // Normalise les apostrophes typographiques (') en apostrophes droites (')
             const nom = path.dataset.nom.replace(/\u2019/g, "'");
             if (!nomsDepartements.has(nom)) {
                 path.classList.add("dept-desactive");
                 return;
             }
-            pathsParNom[nom] = path;
+            pathsParNomClimat[nom] = path;
             path.classList.add("dept-actif");
             path.setAttribute("role", "button");
             path.setAttribute("tabindex", "0");
@@ -81,27 +136,103 @@ async function chargerCarte() {
             });
         });
     } catch (e) {
-        carteInfo.textContent = "Carte indisponible — utilisez la liste déroulante.";
+        carteInfoClimat.textContent = "Carte indisponible — utilisez la liste déroulante.";
     }
 }
 
-// Point d'entrée unique : met à jour le select, surligne la carte, reconstruit les graphiques
+// Charge le SVG pour l'onglet démographie (coloré par évolution de population)
+async function chargerCarteDemographie() {
+    try {
+        const res = await fetch("carte-france.svg");
+        const svgText = await res.text();
+        carteContainerDemographie.innerHTML = svgText;
+        const svg = carteContainerDemographie.querySelector("svg");
+        if (!svg) return;
+
+        svg.querySelectorAll("path[data-nom]").forEach(path => {
+            const nom = path.dataset.nom.replace(/\u2019/g, "'");
+            if (!nomsDepartements.has(nom)) {
+                path.classList.add("dept-desactive");
+                return;
+            }
+            pathsParNomDemographie[nom] = path;
+            path.setAttribute("role", "button");
+            path.setAttribute("tabindex", "0");
+            path.setAttribute("aria-label", nom);
+
+            const evol = evolutionParDept[nom];
+            if (evol) {
+                path.style.fill = couleurEvolution(evol.evolution);
+                path.classList.add("dept-demo");
+                const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+                title.textContent = `${nom} : ${evol.evolution > 0 ? "+" : ""}${evol.evolution}% (${evol.annee_reference}\u2192${evol.annee_recente})`;
+                path.appendChild(title);
+            } else {
+                path.classList.add("dept-desactive");
+                return;
+            }
+
+            path.addEventListener("click", () => selectionnerDepartement(nom));
+            path.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    selectionnerDepartement(nom);
+                }
+            });
+        });
+    } catch (e) {
+        carteInfoDemographie.textContent = "Carte indisponible — utilisez la liste déroulante.";
+    }
+}
+
+// Map une valeur d'évolution (en %) vers une couleur (rouge = recul, bleu = croissance)
+function couleurEvolution(evolution) {
+    const clamped = Math.max(-5, Math.min(5, evolution));
+    const intensity = Math.abs(clamped) / 5;
+    if (intensity < 0.02) {
+        return "#4a5560";
+    }
+    const hue = evolution < 0 ? 0 : 210;
+    const lightness = 48 - intensity * 18;
+    return `hsl(${hue}, 65%, ${lightness}%)`;
+}
+
+// Point d'entrée unique : met à jour le select, surligne les cartes, reconstruit les graphiques
 function selectionnerDepartement(nom) {
     selectDepartement.value = nom;
     surlignerDepartement(nom);
     construireGraphiques(nom);
 }
 
-// Met en évidence le département cliqué sur la carte
+// Met en évidence le département cliqué sur les deux cartes
 function surlignerDepartement(nom) {
-    Object.values(pathsParNom).forEach(p => p.classList.remove("dept-selectionne"));
-    const path = pathsParNom[nom];
-    if (path) {
-        path.classList.add("dept-selectionne");
-        carteInfo.textContent = `Département sélectionné : ${nom}`;
+    // Carte climat
+    Object.values(pathsParNomClimat).forEach(p => p.classList.remove("dept-selectionne"));
+    const pathClimat = pathsParNomClimat[nom];
+    if (pathClimat) {
+        pathClimat.classList.add("dept-selectionne");
+        carteInfoClimat.textContent = `Département sélectionné : ${nom}`;
     } else {
-        // Département d'outre-mer ou non trouvé sur la carte
-        carteInfo.textContent = `Département sélectionné : ${nom} (hors carte métropolitaine)`;
+        carteInfoClimat.textContent = `Département sélectionné : ${nom} (hors carte métropolitaine)`;
+    }
+
+    // Carte démographie
+    Object.values(pathsParNomDemographie).forEach(p => p.classList.remove("dept-selectionne"));
+    const pathDemo = pathsParNomDemographie[nom];
+    if (pathDemo) {
+        pathDemo.classList.add("dept-selectionne");
+        const evol = evolutionParDept[nom];
+        if (evol) {
+            const signe = evol.evolution > 0 ? "+" : "";
+            carteInfoDemographie.textContent =
+                `${nom} : ${signe}${evol.evolution}% sur 5 ans ` +
+                `(${evol.population_reference.toLocaleString("fr-FR")} \u2192 ` +
+                `${evol.population_recente.toLocaleString("fr-FR")} hab)`;
+        } else {
+            carteInfoDemographie.textContent = `Département sélectionné : ${nom}`;
+        }
+    } else {
+        carteInfoDemographie.textContent = `Département sélectionné : ${nom} (hors carte métropolitaine)`;
     }
 }
 
@@ -110,7 +241,6 @@ chargerDepartements();
 
 // --- Graphiques mensuels par département ---
 
-// Génère une couleur HSL répartie sur le cercle pour n couleurs distinctes.
 function paletteCouleurs(n) {
     const couleurs = [];
     for (let i = 0; i < n; i++) {
@@ -145,6 +275,7 @@ async function construireGraphiques(departement) {
         for (const m of METRIQUES) {
             construireUnGraphique(data, m);
         }
+        construireGraphiquePopulation(departement);
     } catch (e) {
         afficherGraphErreur("Erreur de chargement des données.");
     } finally {
@@ -153,8 +284,6 @@ async function construireGraphiques(departement) {
 }
 
 function construireUnGraphique(data, metric) {
-    // Reshape : seriesParAnnee[annee][mois-1] = valeur
-    // normale[mois-1] = normale (constante par mois)
     const annees = [];
     const seriesParAnnee = {};
     const normale = new Array(12).fill(null);
@@ -183,7 +312,6 @@ function construireUnGraphique(data, metric) {
         borderWidth: 2
     }));
 
-    // Normale 1991-2020 en pointillés, en dernier (référence)
     datasets.push({
         label: "Normale 1991-2020",
         data: normale,
@@ -197,7 +325,6 @@ function construireUnGraphique(data, metric) {
 
     const canvas = document.getElementById(metric.canvasId);
 
-    // Détruire l'instance précédente si elle existe
     if (chartInstances[metric.canvasId]) {
         chartInstances[metric.canvasId].destroy();
     }
@@ -217,7 +344,7 @@ function construireUnGraphique(data, metric) {
                 tooltip: {
                     callbacks: {
                         label: (ctx) =>
-                            `${ctx.dataset.label} : ${ctx.parsed.y !== null ? ctx.parsed.y.toFixed(1) : "—"} ${metric.unit}`
+                            `${ctx.dataset.label} : ${ctx.parsed.y !== null ? ctx.parsed.y.toFixed(1) : "\u2014"} ${metric.unit}`
                     }
                 }
             },
@@ -237,7 +364,73 @@ function construireUnGraphique(data, metric) {
     });
 }
 
-// Met à jour les graphiques dès qu'on change de département via la liste déroulante
 selectDepartement.addEventListener("change", () => {
     if (selectDepartement.value) selectionnerDepartement(selectDepartement.value);
 });
+
+// --- Graphique de population (INSEE) ---
+
+function construireGraphiquePopulation(departement) {
+    try {
+        const data = populationData[departement];
+        if (!data) return;
+
+        const annees = data.map(d => d.annee);
+        const populations = data.map(d => d.population);
+
+        const canvas = document.getElementById("chart-population");
+        if (chartInstances["chart-population"]) {
+            chartInstances["chart-population"].destroy();
+        }
+
+        chartInstances["chart-population"] = new Chart(canvas, {
+            type: "line",
+            data: {
+                labels: annees,
+                datasets: [{
+                    label: "Population",
+                    data: populations,
+                    borderColor: "#4ecca3",
+                    backgroundColor: "rgba(78, 204, 163, 0.1)",
+                    fill: true,
+                    tension: 0.2,
+                    pointRadius: 2,
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: "bottom",
+                        labels: { color: "#e8eef2", usePointStyle: true, boxWidth: 12 }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: (ctx) =>
+                                `${ctx.dataset.label} : ${ctx.parsed.y.toLocaleString("fr-FR")} hab`
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        title: { display: true, text: "Année", color: "#8a9ba8" },
+                        ticks: { color: "#8a9ba8", maxTicksLimit: 12 },
+                        grid: { color: "rgba(255,255,255,0.05)" }
+                    },
+                    y: {
+                        title: { display: true, text: "Population (habitants)", color: "#8a9ba8" },
+                        ticks: {
+                            color: "#8a9ba8",
+                            callback: (val) => val.toLocaleString("fr-FR")
+                        },
+                        grid: { color: "rgba(255,255,255,0.05)" }
+                    }
+                }
+            }
+        });
+    } catch (e) {
+        // Données de population indisponibles : on ignore silencieusement
+    }
+}

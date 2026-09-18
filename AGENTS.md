@@ -2,12 +2,14 @@
 
 ## À propos du projet
 
-FranceClimate est une application web affichant les données climatologiques
-mensuelles de chaque département français (température, précipitations,
-ensoleillement, vent) par rapport à la normale climatique 1991-2020. Les
-données proviennent des **données climatologiques de base mensuelles** de
+FranceClimate est une application web statique affichant les données
+climatologiques mensuelles de chaque département français (température,
+précipitations, ensoleillement, vent) par rapport à la normale climatique
+1991-2020, ainsi que l'évolution démographique (population INSEE). Les données
+climatiques proviennent des **données climatologiques de base mensuelles** de
 Météo-France (Licence Ouverte 2.0), agrégées par département à partir des
-stations météorologiques.
+stations météorologiques. Le site est déployé via GitHub Pages, sans backend
+runtime : les données sont pré-calculées en JSON et servies en statique.
 
 ## Stack
 
@@ -15,8 +17,9 @@ stations météorologiques.
 |--------------|-------------------------------|
 | Frontend     | HTML / CSS / JS (vanilla)      |
 | Graphiques   | Chart.js (via CDN)            |
-| Backend      | Python 3.10+ / Flask          |
+| Build        | Python 3.10+ (pipelines données) |
 | Données      | CSV sources + JSON pré-calculés |
+| Déploiement  | GitHub Pages (site statique)  |
 | Environnement| `uv` (gestion des dépendances) |
 
 ## Structure
@@ -31,15 +34,20 @@ FranceClimate/
 │   ├── population.json         # Population par département (INSEE, 1975-2026)
 │   └── departements.json       # Liste des départements
 ├── backend/
-│   ├── app.py                  # API Flask
-│   ├── data_processing.py      # Pipeline : téléchargement + traitement
+│   ├── data_processing.py      # Pipeline : téléchargement + traitement Météo-France
 │   ├── population.py           # Pipeline : population INSEE par département
 │   ├── refresh.py              # Rafraîchit les données récentes (latest)
 │   └── requirements.txt
 ├── frontend/
 │   ├── index.html
 │   ├── style.css
-│   └── script.js              # Appel API + rendu Chart.js (4 graphiques)
+│   ├── script.js              # Fetch des JSON statiques + rendu Chart.js
+│   ├── carte-france.svg
+│   └── data/                   # Données servies en statique (GitHub Pages)
+│       ├── departements.json
+│       ├── population.json
+│       └── departements/       # Un fichier <code>.json par département
+├── .github/workflows/pages.yml # Déploiement GitHub Pages
 ├── pyproject.toml
 └── .gitignore
 ```
@@ -61,28 +69,22 @@ python backend/population.py
 # Rafraîchir uniquement les données récentes (latest, mise à jour quotidienne)
 python backend/refresh.py
 
-# Lancer l'API (http://localhost:5000)
-python backend/app.py
-
-# Servir le frontend (http://localhost:8000)
+# Servir le frontend en local (http://localhost:8000)
 python -m http.server 8000 --directory frontend
 ```
 
-## API Flask
+## Données statiques (frontend/data/)
 
-| Endpoint                  | Paramètres                        | Description                          |
-|---------------------------|-----------------------------------|--------------------------------------|
-| `GET /api/departements`   | —                                 | Liste des départements               |
-| `GET /api/annees`         | —                                 | Années disponibles                   |
-| `GET /api/metrics`        | —                                 | Liste des métriques (libellés, unités) |
-| `GET /api/anomalie`       | `departement`, `mois`, `annee`    | Données pour un point (4 métriques)   |
-| `GET /api/anomalies`      | `departement`                     | Série complète d'un département      |
-| `GET /api/population`     | `departement`                     | Série de population (INSEE, 1975-2026) |
-| `GET /api/population/evolution` | —                           | Évolution sur 5 ans, tous départements |
+Les fichiers dans `frontend/data/` sont générés par les pipelines Python et
+servis en statique par le frontend via `fetch()`. Ils sont régénérés à chaque
+exécution de `backend/data_processing.py` (climat) et
+`backend/population.py` (population).
 
-Le endpoint `/api/anomalie` fait une recherche linéaire dans la liste
-complète chargée en mémoire ; pour des recherches fréquentes, envisager un
-index par `(departement, mois, annee)`.
+| Fichier                       | Source                        | Description                          |
+|-------------------------------|-------------------------------|--------------------------------------|
+| `departements.json`           | `data_processing.py`         | Liste des départements (nom, code)  |
+| `departements/<code>.json`    | `data_processing.py`         | Anomalies d'un département (série)  |
+| `population.json`              | `population.py`              | Population par département (INSEE)  |
 
 ## Règles de travail
 

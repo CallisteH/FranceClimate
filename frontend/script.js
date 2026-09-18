@@ -1,7 +1,5 @@
-// Configuration de l'API
-// En local : http://localhost:5000
-// En production : remplacer par l'URL de l'API déployée
-const API_BASE = "http://localhost:5000";
+// Chemin de base des données statiques (site statique, pas d'API).
+const DATA_BASE = "data";
 
 const MOIS_NOMS = [
     "Janvier", "Février", "Mars", "Avril", "Mai", "Juin",
@@ -15,10 +13,12 @@ const graphErreur = document.getElementById("graph-erreur");
 const carteContainer = document.getElementById("carte-france");
 const carteInfo = document.getElementById("carte-info");
 
-// Set des noms de départements disponibles via l'API (pour activer les paths SVG)
+// Set des noms de départements disponibles (pour activer les paths SVG)
 const nomsDepartements = new Set();
 // Map nom → élément path SVG (pour le surlignage)
 const pathsParNom = {};
+// Map nom → code de département (pour charger le bon fichier de données)
+const codeParNom = {};
 
 // Métriques à afficher (clé, canvas ID, champ valeur, champ normale, unité, libellé axe Y)
 const METRIQUES = [
@@ -31,13 +31,14 @@ const METRIQUES = [
 // Stocke les instances Chart par métrique pour pouvoir les détruire
 const chartInstances = {};
 
-// Charger les départements depuis l'API, puis charger la carte SVG
+// Charger les départements depuis les données statiques, puis charger la carte SVG
 async function chargerDepartements() {
     try {
-        const res = await fetch(`${API_BASE}/api/departements`);
+        const res = await fetch(`${DATA_BASE}/departements.json`);
         const depts = await res.json();
         depts.forEach(d => {
             nomsDepartements.add(d.nom);
+            codeParNom[d.nom] = d.code;
             const opt = document.createElement("option");
             opt.value = d.nom;
             opt.textContent = `${d.code} - ${d.nom}`;
@@ -129,20 +130,23 @@ async function construireGraphiques(departement) {
     graphChargement.classList.remove("hidden");
 
     try {
-        const res = await fetch(
-            `${API_BASE}/api/anomalies?departement=${encodeURIComponent(departement)}`
-        );
-        const data = await res.json();
-        if (!res.ok) {
-            afficherGraphErreur(data.error || "Données non trouvées.");
+        const code = codeParNom[departement];
+        if (!code) {
+            afficherGraphErreur("Code de département introuvable.");
             return;
         }
+        const res = await fetch(`${DATA_BASE}/departements/${code}.json`);
+        if (!res.ok) {
+            afficherGraphErreur("Données non trouvées.");
+            return;
+        }
+        const data = await res.json();
 
         for (const m of METRIQUES) {
             construireUnGraphique(data, m);
         }
     } catch (e) {
-        afficherGraphErreur("Erreur de connexion à l'API.");
+        afficherGraphErreur("Erreur de chargement des données.");
     } finally {
         graphChargement.classList.add("hidden");
     }

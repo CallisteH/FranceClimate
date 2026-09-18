@@ -28,6 +28,11 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data"
 RAW_DIR = DATA_DIR / "raw"
 RAW_DIR.mkdir(parents=True, exist_ok=True)
 
+# Dossier du frontend servi en statique (GitHub Pages).
+FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
+FRONTEND_DATA_DIR = FRONTEND_DIR / "data"
+FRONTEND_DEPARTEMENTS_DIR = FRONTEND_DATA_DIR / "departements"
+
 # Base URL des fichiers mensuels Météo-France sur le S3 OVH.
 # Deux fenêtres temporelles :
 #   - previous : archive figée 1950-2024 (toutes stations, dont fermées)
@@ -216,6 +221,45 @@ def parser_fichier(chemin: Path, code_fichier: str) -> pd.DataFrame:
     return df
 
 
+def generer_donnees_statiques(depts_list: list[dict], anomalies: list[dict]) -> None:
+    """Génère les fichiers de données statiques pour le frontend (site statique).
+
+    Produit dans frontend/data :
+      - departements.json          : liste des départements (copie de data/departements.json)
+      - departements/<code>.json   : anomalies d'un département (série 2018-2026)
+
+    Args:
+        depts_list: liste des départements (nom, code).
+        anomalies: liste complète des anomalies (tous départements confondus).
+    """
+    FRONTEND_DATA_DIR.mkdir(parents=True, exist_ok=True)
+    FRONTEND_DEPARTEMENTS_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Liste des départements pour le frontend
+    (FRONTEND_DATA_DIR / "departements.json").write_text(
+        json.dumps(depts_list, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
+
+    # Index nom → code pour le découpage par département
+    code_par_nom = {d["nom"]: d["code"] for d in depts_list}
+
+    # Regrouper les anomalies par département
+    par_departement: dict[str, list[dict]] = {}
+    for a in anomalies:
+        par_departement.setdefault(a["departement"], []).append(a)
+
+    nb = 0
+    for nom, serie in par_departement.items():
+        code = code_par_nom.get(nom, nom)
+        chemin = FRONTEND_DEPARTEMENTS_DIR / f"{code}.json"
+        chemin.write_text(
+            json.dumps(serie, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+        nb += 1
+
+    print(f"  {nb} fichiers départementaux écrits dans frontend/data/departements/\n")
+
+
 def main() -> None:
     print("=== FranceClimate — Pipeline de données réelles Météo-France ===\n")
 
@@ -332,6 +376,10 @@ def main() -> None:
         json.dumps(depts_list, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     print(f"  {len(depts_list)} départements écrits dans departements.json\n")
+
+    # 9. Générer les fichiers statiques pour le frontend (site statique GitHub Pages)
+    print("Génération des fichiers statiques pour le frontend…")
+    generer_donnees_statiques(depts_list, anomalies.to_dict("records"))
 
     print("=== Résumé ===")
     print(f"Départements : {len(depts_list)}")

@@ -32,10 +32,12 @@ FranceClimate/
 │   ├── observations_mensuelles.csv
 │   ├── anomalies.json          # Anomalies pré-calculées
 │   ├── population.json         # Population par département (INSEE, 1975-2026)
+│   ├── immobilier.json         # Indice Notaires-INSEE par région (1996→)
 │   └── departements.json       # Liste des départements
 ├── backend/
 │   ├── data_processing.py      # Pipeline : téléchargement + traitement Météo-France
 │   ├── population.py           # Pipeline : population INSEE par département
+│   ├── immobilier.py           # Pipeline : indice Notaires-INSEE par région
 │   ├── refresh.py              # Rafraîchit les données récentes (latest)
 │   └── requirements.txt
 ├── frontend/
@@ -43,9 +45,11 @@ FranceClimate/
 │   ├── style.css
 │   ├── script.js              # Fetch des JSON statiques + rendu Chart.js
 │   ├── carte-france.svg
+│   ├── carte-france-regions.svg
 │   └── data/                   # Données servies en statique (GitHub Pages)
 │       ├── departements.json
 │       ├── population.json
+│       ├── immobilier.json
 │       └── departements/       # Un fichier <code>.json par département
 ├── .github/workflows/pages.yml # Déploiement GitHub Pages
 ├── pyproject.toml
@@ -85,6 +89,7 @@ exécution de `backend/data_processing.py` (climat) et
 | `departements.json`           | `data_processing.py`         | Liste des départements (nom, code)  |
 | `departements/<code>.json`    | `data_processing.py`         | Anomalies d'un département (série)  |
 | `population.json`              | `population.py`              | Population par département (INSEE)  |
+| `immobilier.json`             | `immobilier.py`              | Indice Notaires-INSEE par région     |
 
 ## Règles de travail
 
@@ -117,6 +122,16 @@ exécution de `backend/data_processing.py` (climat) et
   l'éditer à la main. La source (fichier xlsx INSEE) est mise en cache dans
   `data/raw/` (gitignoré). L'URL INSEE est codée en dur dans
   `backend/population.py` et doit être mise à jour annuellement.
+- `data/immobilier.json` est régénéré par `backend/immobilier.py` ; ne pas
+  l'éditer à la main. Les données proviennent de l'API SDMX de l'INSEE
+  (indice Notaires-INSEE des prix des logements anciens, base 100 = 2015),
+  sans clé ni cache fichier (une requête batch à chaque exécution). Les
+  données sont structurées par région (13 régions métropolitaines) : 5
+  séries régionales distinctes (Province, Île-de-France, AURA, PACA,
+  Hauts-de-France) couvrent l'ensemble du territoire. La carte de l'onglet
+  immobilier utilise `frontend/carte-france-regions.svg` (généré par
+  fusion des paths départements du SVG existant). Les DOM ne sont pas
+  couverts.
 - Les CSV bruts Météo-France sont mis en cache dans `data/raw/` (gitignoré).
 - Les données sont des vraies observations Météo-France agrégées par
   département (moyenne des stations), pas des échantillons synthétiques.

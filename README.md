@@ -1,15 +1,18 @@
-# FranceClimate — Climat et démographie par département
+# FranceClimate — Climat, démographie et immobilier par département
 
 Application web statique affichant les données climatologiques mensuelles
 d'un département français (température, précipitations, ensoleillement, vent)
-par rapport à la normale climatique 1991-2020, ainsi que l'évolution
-démographique (population INSEE).
+par rapport à la normale climatique 1991-2020, l'évolution démographique
+(population INSEE) et l'indice des prix des logements anciens
+(Notaires-INSEE).
 
 Les données climatiques proviennent des **données climatologiques de base
 mensuelles** de Météo-France (Licence Ouverte 2.0). Elles sont agrégées par
 département à partir des observations des stations météorologiques. Les
 données de population proviennent de l'INSEE (estimations de population,
-Licence Ouverte 2.0).
+Licence Ouverte 2.0). L'indice immobilier provient de l'INSEE / Notaires de
+France (indice des prix des logements anciens, base 100 = 2015, Licence
+Ouverte 2.0).
 
 Le site est déployé via GitHub Pages : aucune API, les données sont
 pré-calculées en JSON et servies en statique.
@@ -35,10 +38,12 @@ FranceClimate/
 │   ├── observations_mensuelles.csv # Observations 2018-2026 par département
 │   ├── anomalies.json              # Anomalies pré-calculées (4 métriques)
 │   ├── population.json             # Population par département (INSEE, 1975-2026)
+│   ├── immobilier.json             # Indice Notaires-INSEE par département (1996→)
 │   └── departements.json           # Liste des départements
 ├── backend/
 │   ├── data_processing.py          # Pipeline : téléchargement + traitement Météo-France
 │   ├── population.py              # Pipeline : population INSEE par département
+│   ├── immobilier.py              # Pipeline : indice Notaires-INSEE par région
 │   ├── refresh.py                  # Rafraîchit les données récentes (latest)
 │   └── requirements.txt
 ├── frontend/
@@ -46,9 +51,11 @@ FranceClimate/
 │   ├── style.css
 │   ├── script.js                   # Fetch des JSON statiques + rendu Chart.js
 │   ├── carte-france.svg
+│   ├── carte-france-regions.svg
 │   └── data/                       # Données servies en statique (GitHub Pages)
 │       ├── departements.json
 │       ├── population.json
+│       ├── immobilier.json
 │       └── departements/           # Un fichier <code>.json par département
 ├── .github/workflows/pages.yml     # Déploiement GitHub Pages
 ├── pyproject.toml
@@ -70,6 +77,7 @@ uv pip install -r backend/requirements.txt
 ```bash
 python backend/data_processing.py   # climat Météo-France
 python backend/population.py         # population INSEE
+python backend/immobilier.py         # indice Notaires-INSEE
 ```
 
 Le script `data_processing.py` télécharge les fichiers mensuels Météo-France

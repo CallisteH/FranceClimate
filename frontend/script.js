@@ -12,20 +12,29 @@ const graphChargement = document.getElementById("graph-chargement");
 const graphErreur = document.getElementById("graph-erreur");
 const carteContainerClimat = document.getElementById("carte-france-climat");
 const carteContainerDemographie = document.getElementById("carte-france-demographie");
+const carteContainerImmobilier = document.getElementById("carte-france-immobilier");
 const carteInfoClimat = document.getElementById("carte-info-climat");
 const carteInfoDemographie = document.getElementById("carte-info-demographie");
+const carteInfoImmobilier = document.getElementById("carte-info-immobilier");
 
 // Set des noms de départements disponibles (pour activer les paths SVG)
 const nomsDepartements = new Set();
 // Map nom → code de département (pour charger le bon fichier de données)
 const codeParNom = {};
+// Map nom de département → nom de région (extrait du SVG départements)
+const deptVersRegion = {};
 // Map nom → élément path SVG (pour le surlignage), une par carte
 const pathsParNomClimat = {};
 const pathsParNomDemographie = {};
+const pathsParNomImmobilier = {};
 // Données de population chargées en mémoire { nom: [{annee, population}, ...] }
 let populationData = {};
+// Données d'indice immobilier chargées en mémoire { nom: [{trimestre, valeur}, ...] }
+let immobilierData = {};
 // Évolution démographique { nom: { evolution, ... } }
 let evolutionParDept = {};
+// Évolution immobilière { nom: { evolution, ... } }
+let evolutionImmobilierParDept = {};
 
 // Métriques à afficher (clé, canvas ID, champ valeur, champ normale, unité, libellé axe Y)
 const METRIQUES = [
@@ -46,13 +55,16 @@ function activerOnglet(nom) {
     });
     document.getElementById("contenu-climat").classList.toggle("hidden", nom !== "climat");
     document.getElementById("contenu-demographie").classList.toggle("hidden", nom !== "demographie");
+    document.getElementById("contenu-immobilier").classList.toggle("hidden", nom !== "immobilier");
 
     if (nom === "climat") {
         for (const m of METRIQUES) {
             if (chartInstances[m.canvasId]) chartInstances[m.canvasId].resize();
         }
-    } else {
+    } else if (nom === "demographie") {
         if (chartInstances["chart-population"]) chartInstances["chart-population"].resize();
+    } else if (nom === "immobilier") {
+        if (chartInstances["chart-immobilier"]) chartInstances["chart-immobilier"].resize();
     }
 }
 
@@ -63,12 +75,14 @@ document.querySelectorAll(".onglet").forEach(onglet => {
 // Charger les départements et la population depuis les données statiques, puis charger les cartes
 async function chargerDepartements() {
     try {
-        const [resDepts, resPop] = await Promise.all([
+        const [resDepts, resPop, resImm] = await Promise.all([
             fetch(`${DATA_BASE}/departements.json`),
             fetch(`${DATA_BASE}/population.json`),
+            fetch(`${DATA_BASE}/immobilier.json`),
         ]);
         const depts = await resDepts.json();
         populationData = await resPop.json();
+        immobilierData = await resImm.json();
 
         depts.forEach(d => {
             nomsDepartements.add(d.nom);
@@ -80,8 +94,10 @@ async function chargerDepartements() {
         });
 
         calculerEvolution();
+        calculerEvolutionImmobilier();
         await chargerCarteClimat();
         await chargerCarteDemographie();
+        await chargerCarteImmobilier();
         if (selectDepartement.value) selectionnerDepartement(selectDepartement.value);
     } catch (e) {
         afficherGraphErreur("Impossible de charger la liste des départements.");
@@ -107,6 +123,26 @@ function calculerEvolution() {
     }
 }
 
+// Calcule l'évolution de l'indice immobilier sur la dernière année
+// (4 derniers trimestres) pour chaque département
+function calculerEvolutionImmobilier() {
+    for (const [dept, serie] of Object.entries(immobilierData)) {
+        if (serie.length < 5) continue;
+        const recent = serie[serie.length - 1];
+        const ref = serie[serie.length - 5];
+        const evolution = Math.round(
+            (recent.valeur - ref.valeur) / ref.valeur * 100 * 100
+        ) / 100;
+        evolutionImmobilierParDept[dept] = {
+            evolution,
+            trimestre_recent: recent.trimestre,
+            trimestre_reference: ref.trimestre,
+            valeur_recente: recent.valeur,
+            valeur_reference: ref.valeur,
+        };
+    }
+}
+
 // Charge le SVG pour l'onglet climat (style uniforme, cliquable)
 async function chargerCarteClimat() {
     try {
@@ -115,6 +151,16 @@ async function chargerCarteClimat() {
         carteContainerClimat.innerHTML = svgText;
         const svg = carteContainerClimat.querySelector("svg");
         if (!svg) return;
+
+        // Extraire le mapping département → région depuis les <g class="region">
+        svg.querySelectorAll("g.region").forEach(g => {
+            const regionNom = g.dataset.nom;
+            if (!regionNom) return;
+            g.querySelectorAll("path[data-nom]").forEach(p => {
+                const deptNom = p.dataset.nom.replace(/\u2019/g, "'");
+                deptVersRegion[deptNom] = regionNom;
+            });
+        });
 
         svg.querySelectorAll("path[data-nom]").forEach(path => {
             const nom = path.dataset.nom.replace(/\u2019/g, "'");
@@ -185,6 +231,67 @@ async function chargerCarteDemographie() {
     }
 }
 
+// Charge le SVG pour l'onglet immobilier (carte des régions, colorée par évolution)
+async function chargerCarteImmobilier() {
+    try {
+        const res = await fetch("carte-france-regions.svg");
+        const svgText = await res.text();
+        carteContainerImmobilier.innerHTML = svgText;
+        const svg = carteContainerImmobilier.querySelector("svg");
+        if (!svg) return;
+
+        svg.querySelectorAll("path[data-nom]").forEach(path => {
+            const nom = path.dataset.nom.replace(/\u2019/g, "'");
+            pathsParNomImmobilier[nom] = path;
+            path.setAttribute("role", "button");
+            path.setAttribute("tabindex", "0");
+            path.setAttribute("aria-label", nom);
+
+            const evol = evolutionImmobilierParDept[nom];
+            if (evol) {
+                path.style.fill = couleurEvolution(evol.evolution);
+                path.classList.add("dept-demo");
+                const title = document.createElementNS("http://www.w3.org/2000/svg", "title");
+                title.textContent = `${nom} : ${evol.evolution > 0 ? "+" : ""}${evol.evolution}% (${evol.trimestre_reference}\u2192${evol.trimestre_recent})`;
+                path.appendChild(title);
+            } else {
+                path.classList.add("dept-desactive");
+                return;
+            }
+
+            path.addEventListener("click", () => selectionnerRegionImmobilier(nom));
+            path.addEventListener("keydown", (e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    selectionnerRegionImmobilier(nom);
+                }
+            });
+        });
+    } catch (e) {
+        carteInfoImmobilier.textContent = "Carte indisponible — utilisez la liste déroulante.";
+    }
+}
+
+// Sélectionne une région sur la carte immobilière (clic indépendant de la liste)
+function selectionnerRegionImmobilier(nom) {
+    Object.values(pathsParNomImmobilier).forEach(p => p.classList.remove("dept-selectionne"));
+    const path = pathsParNomImmobilier[nom];
+    if (path) {
+        path.classList.add("dept-selectionne");
+        const evol = evolutionImmobilierParDept[nom];
+        if (evol) {
+            const signe = evol.evolution > 0 ? "+" : "";
+            carteInfoImmobilier.textContent =
+                `${nom} : ${signe}${evol.evolution}% sur 1 an ` +
+                `(indice ${evol.valeur_reference.toLocaleString("fr-FR")} \u2192 ` +
+                `${evol.valeur_recente.toLocaleString("fr-FR")}, ${evol.trimestre_reference}\u2192${evol.trimestre_recent})`;
+        } else {
+            carteInfoImmobilier.textContent = `Région sélectionnée : ${nom}`;
+        }
+    }
+    construireGraphiqueImmobilier(nom);
+}
+
 // Map une valeur d'évolution (en %) vers une couleur (rouge = recul, bleu = croissance)
 function couleurEvolution(evolution) {
     const clamped = Math.max(-5, Math.min(5, evolution));
@@ -202,6 +309,10 @@ function selectionnerDepartement(nom) {
     selectDepartement.value = nom;
     surlignerDepartement(nom);
     construireGraphiques(nom);
+    // Immobilier : mapper le département vers sa région
+    const region = deptVersRegion[nom] || nom;
+    construireGraphiqueImmobilier(region);
+    surlignerRegionImmobilier(region);
 }
 
 // Met en évidence le département cliqué sur les deux cartes
@@ -233,6 +344,27 @@ function surlignerDepartement(nom) {
         }
     } else {
         carteInfoDemographie.textContent = `Département sélectionné : ${nom} (hors carte métropolitaine)`;
+    }
+}
+
+// Met en évidence une région sur la carte immobilière
+function surlignerRegionImmobilier(nom) {
+    Object.values(pathsParNomImmobilier).forEach(p => p.classList.remove("dept-selectionne"));
+    const path = pathsParNomImmobilier[nom];
+    if (path) {
+        path.classList.add("dept-selectionne");
+        const evol = evolutionImmobilierParDept[nom];
+        if (evol) {
+            const signe = evol.evolution > 0 ? "+" : "";
+            carteInfoImmobilier.textContent =
+                `${nom} : ${signe}${evol.evolution}% sur 1 an ` +
+                `(indice ${evol.valeur_reference.toLocaleString("fr-FR")} \u2192 ` +
+                `${evol.valeur_recente.toLocaleString("fr-FR")}, ${evol.trimestre_reference}\u2192${evol.trimestre_recent})`;
+        } else {
+            carteInfoImmobilier.textContent = `Région sélectionnée : ${nom}`;
+        }
+    } else {
+        carteInfoImmobilier.textContent = `Région sélectionnée : ${nom} (données non disponibles)`;
     }
 }
 
@@ -433,4 +565,78 @@ function construireGraphiquePopulation(departement) {
     } catch (e) {
         // Données de population indisponibles : on ignore silencieusement
     }
+}
+
+// --- Graphique d'indice immobilier (Notaires-INSEE) ---
+
+function construireGraphiqueImmobilier(departement) {
+    const canvas = document.getElementById("chart-immobilier");
+    if (chartInstances["chart-immobilier"]) {
+        chartInstances["chart-immobilier"].destroy();
+        chartInstances["chart-immobilier"] = null;
+    }
+
+    const data = immobilierData[departement];
+    if (!data) {
+        // DOM ou département non couvert : message sur le canvas
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = "#8a9ba8";
+        ctx.font = "14px -apple-system, Segoe UI, Roboto, sans-serif";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "middle";
+        ctx.fillText("Données non disponibles pour ce département", canvas.width / 2, canvas.height / 2);
+        return;
+    }
+
+    const trimestres = data.map(d => d.trimestre);
+    const valeurs = data.map(d => d.valeur);
+
+    chartInstances["chart-immobilier"] = new Chart(canvas, {
+        type: "line",
+        data: {
+            labels: trimestres,
+            datasets: [{
+                label: "Indice (base 100 = 2015)",
+                data: valeurs,
+                borderColor: "#ff7043",
+                backgroundColor: "rgba(255, 112, 67, 0.1)",
+                fill: true,
+                tension: 0.2,
+                pointRadius: 2,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: "bottom",
+                    labels: { color: "#e8eef2", usePointStyle: true, boxWidth: 12 }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: (ctx) =>
+                            `${ctx.dataset.label} : ${ctx.parsed.y.toLocaleString("fr-FR")}`
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    title: { display: true, text: "Trimestre", color: "#8a9ba8" },
+                    ticks: { color: "#8a9ba8", maxTicksLimit: 12 },
+                    grid: { color: "rgba(255,255,255,0.05)" }
+                },
+                y: {
+                    title: { display: true, text: "Indice (base 100 = 2015)", color: "#8a9ba8" },
+                    ticks: {
+                        color: "#8a9ba8",
+                        callback: (val) => val.toLocaleString("fr-FR")
+                    },
+                    grid: { color: "rgba(255,255,255,0.05)" }
+                }
+            }
+        }
+    });
 }

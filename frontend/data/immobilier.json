@@ -1,0 +1,5924 @@
+{
+  "Auvergne-Rhône-Alpes": [
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 96.2
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 98.7
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 101.9
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 101.2
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 106.0
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 104.6
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 104.4
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 103.0
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 101.4
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 102.1
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 102.1
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.1
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.7
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.2
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.7
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 100.8
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 102.2
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 103.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 105.8
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 106.0
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 109.2
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 108.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 110.2
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 113.6
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 114.6
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 117.0
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 119.9
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 121.4
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 122.7
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 125.3
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 130.4
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 131.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 132.8
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 135.2
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 139.7
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 138.4
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 137.0
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 136.5
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 137.7
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.8
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.8
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.7
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 132.0
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 129.9
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.6
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.6
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 133.0
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.5
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.4
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 129.7
+    }
+  ],
+  "Bourgogne-Franche-Comté": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Bretagne": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Centre-Val de Loire": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Corse": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Grand Est": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Hauts-de-France": [
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.2
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 106.6
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.7
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.3
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.8
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.8
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 105.2
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.2
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 105.1
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 102.6
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.6
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 99.8
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.2
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 101.2
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 99.9
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 101.9
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.1
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.2
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 101.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 103.8
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 102.7
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 102.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 102.7
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 105.3
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 104.4
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 106.4
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 108.3
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 110.2
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 112.7
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 113.9
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 114.3
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 115.9
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 120.6
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 120.1
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 121.7
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 123.5
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 127.1
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 124.5
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 122.8
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 122.2
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 123.1
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 119.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 117.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 119.5
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 118.4
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 118.6
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 119.4
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 120.1
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 120.7
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 119.4
+    }
+  ],
+  "Île-de-France": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 38.8
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 38.6
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 39.0
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 38.5
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 37.0
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 37.4
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 37.5
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 37.0
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 36.8
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 37.3
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 38.2
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 37.9
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 38.6
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 39.3
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 41.2
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 41.2
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 42.3
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 45.3
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 45.0
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 45.9
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 47.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 48.8
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 48.4
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 48.8
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 50.4
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 52.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 53.9
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 56.0
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 58.3
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 59.4
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 61.3
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 63.9
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 68.4
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 70.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 77.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 79.0
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 81.6
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 83.8
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 86.6
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 87.0
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 88.6
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 90.0
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 92.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 93.2
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 93.2
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 93.9
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 94.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 91.7
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 87.6
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 85.1
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 87.0
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 87.0
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 89.5
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 91.9
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 95.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 97.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 100.1
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 103.7
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 105.1
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 105.2
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 106.4
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 102.1
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.7
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 101.2
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.8
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 103.2
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 103.2
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 108.0
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 107.6
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 109.1
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 111.8
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 111.6
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 113.1
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 115.8
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 116.1
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 120.6
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 122.8
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 123.4
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 123.6
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 124.8
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 127.8
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 126.3
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 126.8
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 127.8
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 128.0
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 126.0
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 123.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 123.1
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 119.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 115.8
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 115.0
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 116.6
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 114.8
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 114.9
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 115.0
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 117.0
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 115.3
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 115.0
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 114.6
+    }
+  ],
+  "Normandie": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Nouvelle-Aquitaine": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Occitanie": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Pays de la Loire": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 41.4
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 42.4
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 43.4
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 41.7
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 43.6
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 44.2
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 43.1
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 44.4
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 45.5
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 45.4
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 45.8
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 47.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 48.9
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 49.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 49.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 51.1
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 53.0
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 52.7
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 53.3
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 55.2
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 56.9
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 57.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 57.7
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 59.8
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 62.6
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 63.4
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 64.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 67.1
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 70.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 71.6
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.7
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 77.0
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.1
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.3
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 85.6
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.3
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.6
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.4
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 97.4
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.4
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 106.9
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.4
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 110.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 108.6
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 98.9
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 101.0
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 102.8
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 106.5
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 107.4
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 109.5
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 108.1
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 106.3
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 107.1
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 105.4
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 103.6
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 103.3
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 101.8
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 102.9
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.3
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 99.5
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.3
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 99.6
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 99.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 102.0
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 101.7
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 102.5
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 104.1
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 104.9
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 107.5
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 107.0
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 106.8
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 110.7
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 111.9
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 113.7
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 116.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 118.0
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 119.1
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 122.0
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 126.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 132.4
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 136.8
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 136.1
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 135.1
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 134.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 136.0
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 132.2
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 129.3
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 129.1
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 130.0
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 130.1
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 132.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 131.4
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 130.2
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.8
+    }
+  ],
+  "Provence-Alpes-Côte d'Azur": [
+    {
+      "trimestre": "1996-Q1",
+      "valeur": 38.0
+    },
+    {
+      "trimestre": "1996-Q2",
+      "valeur": 38.5
+    },
+    {
+      "trimestre": "1996-Q3",
+      "valeur": 39.0
+    },
+    {
+      "trimestre": "1996-Q4",
+      "valeur": 38.8
+    },
+    {
+      "trimestre": "1997-Q1",
+      "valeur": 37.4
+    },
+    {
+      "trimestre": "1997-Q2",
+      "valeur": 39.1
+    },
+    {
+      "trimestre": "1997-Q3",
+      "valeur": 38.5
+    },
+    {
+      "trimestre": "1997-Q4",
+      "valeur": 38.6
+    },
+    {
+      "trimestre": "1998-Q1",
+      "valeur": 37.7
+    },
+    {
+      "trimestre": "1998-Q2",
+      "valeur": 38.9
+    },
+    {
+      "trimestre": "1998-Q3",
+      "valeur": 39.7
+    },
+    {
+      "trimestre": "1998-Q4",
+      "valeur": 39.9
+    },
+    {
+      "trimestre": "1999-Q1",
+      "valeur": 40.0
+    },
+    {
+      "trimestre": "1999-Q2",
+      "valeur": 41.1
+    },
+    {
+      "trimestre": "1999-Q3",
+      "valeur": 42.3
+    },
+    {
+      "trimestre": "1999-Q4",
+      "valeur": 43.0
+    },
+    {
+      "trimestre": "2000-Q1",
+      "valeur": 43.5
+    },
+    {
+      "trimestre": "2000-Q2",
+      "valeur": 45.3
+    },
+    {
+      "trimestre": "2000-Q3",
+      "valeur": 46.4
+    },
+    {
+      "trimestre": "2000-Q4",
+      "valeur": 46.9
+    },
+    {
+      "trimestre": "2001-Q1",
+      "valeur": 47.8
+    },
+    {
+      "trimestre": "2001-Q2",
+      "valeur": 50.1
+    },
+    {
+      "trimestre": "2001-Q3",
+      "valeur": 51.3
+    },
+    {
+      "trimestre": "2001-Q4",
+      "valeur": 53.1
+    },
+    {
+      "trimestre": "2002-Q1",
+      "valeur": 53.5
+    },
+    {
+      "trimestre": "2002-Q2",
+      "valeur": 56.0
+    },
+    {
+      "trimestre": "2002-Q3",
+      "valeur": 59.3
+    },
+    {
+      "trimestre": "2002-Q4",
+      "valeur": 61.2
+    },
+    {
+      "trimestre": "2003-Q1",
+      "valeur": 62.4
+    },
+    {
+      "trimestre": "2003-Q2",
+      "valeur": 65.5
+    },
+    {
+      "trimestre": "2003-Q3",
+      "valeur": 69.1
+    },
+    {
+      "trimestre": "2003-Q4",
+      "valeur": 70.9
+    },
+    {
+      "trimestre": "2004-Q1",
+      "valeur": 73.6
+    },
+    {
+      "trimestre": "2004-Q2",
+      "valeur": 76.7
+    },
+    {
+      "trimestre": "2004-Q3",
+      "valeur": 81.2
+    },
+    {
+      "trimestre": "2004-Q4",
+      "valeur": 83.7
+    },
+    {
+      "trimestre": "2005-Q1",
+      "valeur": 86.1
+    },
+    {
+      "trimestre": "2005-Q2",
+      "valeur": 89.5
+    },
+    {
+      "trimestre": "2005-Q3",
+      "valeur": 93.7
+    },
+    {
+      "trimestre": "2005-Q4",
+      "valeur": 95.6
+    },
+    {
+      "trimestre": "2006-Q1",
+      "valeur": 98.0
+    },
+    {
+      "trimestre": "2006-Q2",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2006-Q3",
+      "valeur": 103.8
+    },
+    {
+      "trimestre": "2006-Q4",
+      "valeur": 105.2
+    },
+    {
+      "trimestre": "2007-Q1",
+      "valeur": 106.1
+    },
+    {
+      "trimestre": "2007-Q2",
+      "valeur": 107.2
+    },
+    {
+      "trimestre": "2007-Q3",
+      "valeur": 109.9
+    },
+    {
+      "trimestre": "2007-Q4",
+      "valeur": 112.0
+    },
+    {
+      "trimestre": "2008-Q1",
+      "valeur": 110.8
+    },
+    {
+      "trimestre": "2008-Q2",
+      "valeur": 110.8
+    },
+    {
+      "trimestre": "2008-Q3",
+      "valeur": 110.8
+    },
+    {
+      "trimestre": "2008-Q4",
+      "valeur": 107.7
+    },
+    {
+      "trimestre": "2009-Q1",
+      "valeur": 103.9
+    },
+    {
+      "trimestre": "2009-Q2",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2009-Q3",
+      "valeur": 102.3
+    },
+    {
+      "trimestre": "2009-Q4",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2010-Q1",
+      "valeur": 104.2
+    },
+    {
+      "trimestre": "2010-Q2",
+      "valeur": 105.7
+    },
+    {
+      "trimestre": "2010-Q3",
+      "valeur": 108.7
+    },
+    {
+      "trimestre": "2010-Q4",
+      "valeur": 110.2
+    },
+    {
+      "trimestre": "2011-Q1",
+      "valeur": 109.7
+    },
+    {
+      "trimestre": "2011-Q2",
+      "valeur": 110.9
+    },
+    {
+      "trimestre": "2011-Q3",
+      "valeur": 112.4
+    },
+    {
+      "trimestre": "2011-Q4",
+      "valeur": 112.3
+    },
+    {
+      "trimestre": "2012-Q1",
+      "valeur": 109.6
+    },
+    {
+      "trimestre": "2012-Q2",
+      "valeur": 108.9
+    },
+    {
+      "trimestre": "2012-Q3",
+      "valeur": 108.8
+    },
+    {
+      "trimestre": "2012-Q4",
+      "valeur": 108.0
+    },
+    {
+      "trimestre": "2013-Q1",
+      "valeur": 105.9
+    },
+    {
+      "trimestre": "2013-Q2",
+      "valeur": 105.8
+    },
+    {
+      "trimestre": "2013-Q3",
+      "valeur": 105.3
+    },
+    {
+      "trimestre": "2013-Q4",
+      "valeur": 105.6
+    },
+    {
+      "trimestre": "2014-Q1",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2014-Q2",
+      "valeur": 103.4
+    },
+    {
+      "trimestre": "2014-Q3",
+      "valeur": 103.1
+    },
+    {
+      "trimestre": "2014-Q4",
+      "valeur": 101.5
+    },
+    {
+      "trimestre": "2015-Q1",
+      "valeur": 99.0
+    },
+    {
+      "trimestre": "2015-Q2",
+      "valeur": 100.2
+    },
+    {
+      "trimestre": "2015-Q3",
+      "valeur": 100.1
+    },
+    {
+      "trimestre": "2015-Q4",
+      "valeur": 100.6
+    },
+    {
+      "trimestre": "2016-Q1",
+      "valeur": 100.1
+    },
+    {
+      "trimestre": "2016-Q2",
+      "valeur": 98.7
+    },
+    {
+      "trimestre": "2016-Q3",
+      "valeur": 100.5
+    },
+    {
+      "trimestre": "2016-Q4",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q1",
+      "valeur": 100.9
+    },
+    {
+      "trimestre": "2017-Q2",
+      "valeur": 101.3
+    },
+    {
+      "trimestre": "2017-Q3",
+      "valeur": 103.1
+    },
+    {
+      "trimestre": "2017-Q4",
+      "valeur": 102.4
+    },
+    {
+      "trimestre": "2018-Q1",
+      "valeur": 103.0
+    },
+    {
+      "trimestre": "2018-Q2",
+      "valeur": 102.7
+    },
+    {
+      "trimestre": "2018-Q3",
+      "valeur": 104.8
+    },
+    {
+      "trimestre": "2018-Q4",
+      "valeur": 104.7
+    },
+    {
+      "trimestre": "2019-Q1",
+      "valeur": 104.0
+    },
+    {
+      "trimestre": "2019-Q2",
+      "valeur": 105.0
+    },
+    {
+      "trimestre": "2019-Q3",
+      "valeur": 106.6
+    },
+    {
+      "trimestre": "2019-Q4",
+      "valeur": 107.9
+    },
+    {
+      "trimestre": "2020-Q1",
+      "valeur": 108.2
+    },
+    {
+      "trimestre": "2020-Q2",
+      "valeur": 108.3
+    },
+    {
+      "trimestre": "2020-Q3",
+      "valeur": 110.2
+    },
+    {
+      "trimestre": "2020-Q4",
+      "valeur": 112.3
+    },
+    {
+      "trimestre": "2021-Q1",
+      "valeur": 112.7
+    },
+    {
+      "trimestre": "2021-Q2",
+      "valeur": 115.6
+    },
+    {
+      "trimestre": "2021-Q3",
+      "valeur": 118.5
+    },
+    {
+      "trimestre": "2021-Q4",
+      "valeur": 121.5
+    },
+    {
+      "trimestre": "2022-Q1",
+      "valeur": 122.8
+    },
+    {
+      "trimestre": "2022-Q2",
+      "valeur": 125.1
+    },
+    {
+      "trimestre": "2022-Q3",
+      "valeur": 129.6
+    },
+    {
+      "trimestre": "2022-Q4",
+      "valeur": 130.5
+    },
+    {
+      "trimestre": "2023-Q1",
+      "valeur": 129.9
+    },
+    {
+      "trimestre": "2023-Q2",
+      "valeur": 130.8
+    },
+    {
+      "trimestre": "2023-Q3",
+      "valeur": 131.6
+    },
+    {
+      "trimestre": "2023-Q4",
+      "valeur": 129.8
+    },
+    {
+      "trimestre": "2024-Q1",
+      "valeur": 127.5
+    },
+    {
+      "trimestre": "2024-Q2",
+      "valeur": 127.2
+    },
+    {
+      "trimestre": "2024-Q3",
+      "valeur": 128.6
+    },
+    {
+      "trimestre": "2024-Q4",
+      "valeur": 128.4
+    },
+    {
+      "trimestre": "2025-Q1",
+      "valeur": 128.1
+    },
+    {
+      "trimestre": "2025-Q2",
+      "valeur": 128.7
+    },
+    {
+      "trimestre": "2025-Q3",
+      "valeur": 130.3
+    },
+    {
+      "trimestre": "2025-Q4",
+      "valeur": 130.6
+    },
+    {
+      "trimestre": "2026-Q1",
+      "valeur": 129.4
+    },
+    {
+      "trimestre": "2026-Q2",
+      "valeur": 128.9
+    }
+  ]
+}

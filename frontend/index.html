@@ -3,19 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Climat et démographie par département</title>
+    <title>Climat, démographie et immobilier par département</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Climat et démographie par département</h1>
+        <h1>Climat, démographie et immobilier par département</h1>
         <p class="subtitle">Une courbe par année + normale 1991-2020 (cliquez sur la légende pour masquer/afficher)</p>
-        <p class="source">Source : Météo-France, Licence Ouverte 2.0 · Population : INSEE, Estimations de population</p>
+        <p class="source">Source : Météo-France, Licence Ouverte 2.0 · Population : INSEE · Immobilier : INSEE / Notaires de France (indice des prix des logements anciens)</p>
 
         <div class="onglets">
             <button type="button" class="onglet actif" data-onglet="climat">Climat</button>
             <button type="button" class="onglet" data-onglet="demographie">Démographie</button>
+            <button type="button" class="onglet" data-onglet="immobilier">Immobilier</button>
         </div>
 
         <div class="field field-select">
@@ -83,6 +84,30 @@
                         <h2>Population totale (habitants)</h2>
                         <div class="chart-wrapper">
                             <canvas id="chart-population"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglet Immobilier -->
+        <div id="contenu-immobilier" class="onglet-contenu hidden">
+            <div class="layout-onglet">
+                <div class="colonne-carte">
+                    <div id="carte-france-immobilier" class="carte-france" aria-label="Carte des régions de France métropolitaine"></div>
+                    <p id="carte-info-immobilier" class="carte-info">Évolution annuelle de l'indice des prix des logements anciens — rouge : recul, bleu : hausse</p>
+
+                    <div class="legende-demographie">
+                        <span class="legende-label">Fort recul</span>
+                        <span class="legende-degrade"></span>
+                        <span class="legende-label">Forte hausse</span>
+                    </div>
+                </div>
+                <div class="colonne-graphiques">
+                    <div class="chart-block">
+                        <h2>Indice des prix des logements anciens (base 100 = 2015)</h2>
+                        <div class="chart-wrapper">
+                            <canvas id="chart-immobilier"></canvas>
                         </div>
                     </div>
                 </div>
